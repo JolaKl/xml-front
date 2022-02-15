@@ -1,0 +1,37 @@
+#page{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+#title{
+    text-align: center;
+}
+
+#grupa{
+    padding-left: 50px;
+}
+
+table, th, td {
+    border:1px solid black;
+  }
+
+input{
+    border: none; border-bottom: 1px solid
+}
+
+#drzavljanstvo-div{
+    padding-left: 125px;
+}
+
+.txt-imput{
+   width:300px;
+   
+}
+
+
+  label {
+    display: inline-block;
+    width: 6em;
+    margin-right: .5em;
+    padding-top: 1.5em;
+  }

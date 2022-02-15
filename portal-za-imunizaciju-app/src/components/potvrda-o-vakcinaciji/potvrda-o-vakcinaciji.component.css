@@ -1,0 +1,46 @@
+#page{
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+#title{
+    text-align: center;
+}
+
+#grupa{
+    padding-left: 50px;
+}
+
+input{
+    border: none; border-bottom: 1px solid
+}
+
+p{
+    color: gray;
+}
+
+#podnaslov{
+    text-align: center;
+}
+
+#desno{
+    text-align: right;
+}
+
+#zaglavlje{
+    color: gray;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }

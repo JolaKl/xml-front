@@ -1,0 +1,16 @@
+#page{
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+#title{
+    text-align: center;
+}
+
+#grupa{
+    padding-left: 50px;
+}
+
+.form-control {
+    border: none; border-bottom: 2px solid; border-bottom-style: dotted; width: 100%;
+}
