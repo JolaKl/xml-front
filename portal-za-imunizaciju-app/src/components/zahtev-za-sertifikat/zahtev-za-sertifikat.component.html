@@ -15,22 +15,22 @@
   <br /><br />
 
   Име и презиме:
-  <input type="text" class="form-control" required />
+  <input type="text" class="form-control" required  [(ngModel)]="imeIperzime"/>
   <br />
   Датум рођења:
-  <input type="text" class="form-control" required />
+  <input type="text" class="form-control" required [(ngModel)]="zahtevZaSertifikat.pacijent.datum_rodjenja"/>
   <br />
   Пол:
-  <input type="text" class="form-control"  required />
+  <input type="text" class="form-control"  required [(ngModel)]="zahtevZaSertifikat.pacijent.pol"/>
   <br />
   Јединствени матични број грађанина:
-  <input type="text" class="form-control"  required />
+  <input type="text" class="form-control"  required [(ngModel)]="zahtevZaSertifikat.pacijent.jmbg"/>
   <br />
   Број пасоша:
-  <input type="text" class="form-control" required />
+  <input type="text" class="form-control" required [(ngModel)]="zahtevZaSertifikat.pacijent.broj_pasosa"/>
   <br />
   Разлог за подношење захтева: <br />
-  <textarea id="w3review" name="w3review" rows="4" cols="50"> </textarea>
+  <textarea id="w3review" name="w3review" rows="4" cols="50" [(ngModel)]="zahtevZaSertifikat.razlog_podnosenja"> </textarea>
   <br />
   <p id="podtekst">
     (навести што прецизнији разлога за подношење захтева за издавање дигиталног
@@ -44,12 +44,13 @@
       name="fiksni"
       id="mesto"
       required
+      [(ngModel)]="zahtevZaSertifikat.mesto"
     />,
   </span>
   <br />
 
   дана14.2022. године <br><br>
   <div class="form-group">
-    <button class="btn btn-primary btn-block" id="ok">Потврди</button>
+    <button class="btn btn-primary btn-block" id="ok" (click)="onPotvrdi()">Потврди</button>
   </div>
 </div>

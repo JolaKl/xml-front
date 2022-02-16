@@ -1,18 +1,38 @@
 <div id="page">
   <h2 id="title">Исказивање интересовања за вакцинисање против COVID-19</h2>
-
-  <form name="form">
+  <form name="interesovanje" (ngSubmit)="(f.form.valid)" #f="ngForm" novalidate>
     <div>
       <br />
       Одаберите опцију: <br />
 
       <div id="grupa">
-        <input type="radio" id="one" class="radio" /> Држављанин Републике
-        Србије <br />
-        <input type="radio" id="two" class="radio" /> Страни држављанин са
-        боравком у РС <br />
-        <input type="radio" id="three" class="radio" /> Страни држављанин без
-        боравка у РС <br /><br />
+        <input
+          type="radio"
+          id="one"
+          class="radio"
+          [(ngModel)]="interesovanje.podaci_o_osobi.drzavljanstvo"
+          value="Državljanin Republike Srbije"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        Држављанин Републике Србије <br />
+        <input
+          type="radio"
+          id="two"
+          class="radio"
+          [(ngModel)]="interesovanje.podaci_o_osobi.drzavljanstvo"
+          value="Strani državljanin sa boravkom u RS"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        Страни држављанин са боравком у РС <br />
+        <input
+          type="radio"
+          id="three"
+          class="radio"
+          [(ngModel)]="interesovanje.podaci_o_osobi.drzavljanstvo"
+          value="Strani državljanin bez boravka u RS"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        Страни држављанин без боравка у РС <br /><br />
       </div>
 
       ЈМБГ:
@@ -21,14 +41,27 @@
         class="form-control"
         name="jmbg"
         id="jmbg"
+        [(ngModel)]="interesovanje.podaci_o_osobi.JMBG"
+        [ngModelOptions]="{ standalone: true }"
         required
-      /><br />
+      />
+      <div
+        class="alert alert-danger"
+        role="alert"
+        id="passwordError"
+        *ngIf="checkJMBG() && f.submitted"
+      >
+        ЈМБГ треба да садржи 13 цифара.
+      </div>
+      <br />
       Име:
       <input
         type="text"
         class="form-control"
         name="ime"
         id="ime"
+        [(ngModel)]="interesovanje.podaci_o_osobi.ime"
+        [ngModelOptions]="{ standalone: true }"
         required
       /><br />
 
@@ -38,6 +71,8 @@
         class="form-control"
         name="prezime"
         id="prezime"
+        [(ngModel)]="interesovanje.podaci_o_osobi.prezime"
+        [ngModelOptions]="{ standalone: true }"
         required
       />
       <br />
@@ -48,8 +83,18 @@
         class="form-control"
         name="adresa"
         id="adresa"
+        [(ngModel)]="interesovanje.podaci_o_osobi.email"
+        [ngModelOptions]="{ standalone: true }"
         required
       />
+      <div
+        class="alert alert-danger"
+        role="alert"
+        id="passwordError"
+        *ngIf="checkEmail() && f.submitted"
+      >
+        Непостојећи мејл.
+      </div>
       <br />
 
       Број мобилног телефона (навести број у формату 06X..... без размака и
@@ -59,8 +104,18 @@
         class="form-control"
         name="mobilni"
         id="mobilni"
+        [(ngModel)]="interesovanje.podaci_o_osobi.broj_mobilnog_telefona"
+        [ngModelOptions]="{ standalone: true }"
         required
       />
+      <div
+        class="alert alert-danger"
+        role="alert"
+        id="passwordError"
+        *ngIf="checkMobilni() && f.submitted"
+      >
+        Погрешан формат.
+      </div>
       <br />
 
       Број фиксног телефона (навести број у формату нпр. 011..... без размака и
@@ -70,14 +125,26 @@
         class="form-control"
         name="fiksni"
         id="fiksni"
+        [(ngModel)]="interesovanje.podaci_o_osobi.broj_fiksnog_telefona"
+        [ngModelOptions]="{ standalone: true }"
         required
       />
+      <div
+        class="alert alert-danger"
+        role="alert"
+        id="passwordError"
+        *ngIf="checkFiksni() && f.submitted"
+      >
+        Погрешан формат.
+      </div>
       <br />Одаберите локацију где желите да примите вакцину (унесите општину):
       <input
         type="text"
         class="form-control"
         name="opstina"
         id="opstina"
+        [(ngModel)]="interesovanje.opsti_podaci.lokacija_opstina"
+        [ngModelOptions]="{ standalone: true }"
         required
       />
 
@@ -85,26 +152,87 @@
       произвођача за који Агенција за лекове и медицинска средства потврди
       безбедност, ефикасност и квалитет и изда дозволу за употребу лека: <br />
       <div id="grupa">
-        <input type="radio" id="sputnik" class="radio" />Pfizer-BioNTech <br />
-        <input type="radio" id="sputnik" class="radio" />Sputnik V (Gamaleya
-        истраживачки центар) <br />
-        <input type="radio" id="sinopharm" class="radio" />Sinopharm
+        <input
+          type="radio"
+          id="pfizer"
+          class="radio"
+          value="Pfizer-BioNtech"
+          [(ngModel)]="interesovanje.opsti_podaci.lokacija_opstina"
+          [ngModelOptions]="{ standalone: true }"
+        />Pfizer-BioNTech <br />
+        <input
+          type="radio"
+          id="sputnik"
+          class="radio"
+          value="Sputnik V (Gamaleya istraživački centar)"
+          [(ngModel)]="interesovanje.opsti_podaci.lokacija_opstina"
+          [ngModelOptions]="{ standalone: true }"
+        />Sputnik V (Gamaleya истраживачки центар) <br />
+        <input
+          type="radio"
+          id="sinopharm"
+          class="radio"
+          value="Sinopharm"
+          [(ngModel)]="interesovanje.opsti_podaci.lokacija_opstina"
+          [ngModelOptions]="{ standalone: true }"
+        />Sinopharm
         <br />
-        <input type="radio" id="astraZeneca" class="radio" />AstraZeneca
+        <input
+          type="radio"
+          id="astraZeneca"
+          class="radio"
+          value="AstraZeneca"
+          [(ngModel)]="interesovanje.opsti_podaci.lokacija_opstina"
+          [ngModelOptions]="{ standalone: true }"
+        />AstraZeneca
         <br />
-        <input type="radio" id="moderna" class="radio" /> Moderna <br />
-        <input type="radio" id="biloSta" class="radio" /> Било која
+        <input
+          type="radio"
+          id="moderna"
+          class="radio"
+          value="Moderna"
+          [(ngModel)]="interesovanje.opsti_podaci.lokacija_opstina"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        Moderna <br />
+        <input
+          type="radio"
+          id="biloSta"
+          class="radio"
+          value="Bilo koja"
+          [(ngModel)]="interesovanje.opsti_podaci.lokacija_opstina"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        Било која
       </div>
       <br />
       Да ли сте добровољни давалац крви? <br />
       <div id="grupa">
-        <input type="radio" id="da" class="radio" /> Да <br />
-        <input type="radio" id="ne" class="radio" /> Не <br />
+        <input
+          type="radio"
+          id="da"
+          class="radio"
+          value="true"
+          [(ngModel)]="interesovanje.opsti_podaci.davalac_krvi"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        Да <br />
+        <input
+          type="radio"
+          id="ne"
+          class="radio"
+          value="false"
+          [(ngModel)]="interesovanje.opsti_podaci.davalac_krvi"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        Не <br />
       </div>
       <br /><br /><br /><br /><br />
       дана 14.02.2022. године <br /><br /><br />
       <div class="form-group">
-        <button class="btn btn-primary btn-block" id="ok">Потврди</button>
+        <button class="btn btn-primary btn-block" id="ok" (click)="onPotvrdi()">
+          Потврди
+        </button>
       </div>
     </div>
   </form>
