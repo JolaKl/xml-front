@@ -26,8 +26,11 @@
       name="jmbg"
       id="jmbg"
       class="txt-imput"
-      [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.drzavljanstvo.srpsko.JMBG"
-      [ngModelOptions]="{standalone: true}"
+      [(ngModel)]="
+        obrazacSaglasnosti.evidencija_pacijent.pacijent.drzavljanstvo.srpsko
+          .JMBG
+      "
+      [ngModelOptions]="{ standalone: true }"
     />
     <div
       class="alert alert-danger"
@@ -48,8 +51,11 @@
             id="drzavljanstvo"
             class="txt-imput"
             style="margin-right: 10px"
-            [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.drzavljanstvo.strano.drzava"
-            [ngModelOptions]="{standalone: true}"
+            [(ngModel)]="
+              obrazacSaglasnosti.evidencija_pacijent.pacijent.drzavljanstvo
+                .strano.drzava
+            "
+            [ngModelOptions]="{ standalone: true }"
           />
           <label
             for="drzavljanstvo"
@@ -65,8 +71,11 @@
             id="pasos"
             class="txt-imput"
             maxlength="10"
-            [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.drzavljanstvo.strano.broj_pasosa"
-            [ngModelOptions]="{standalone: true}"
+            [(ngModel)]="
+              obrazacSaglasnosti.evidencija_pacijent.pacijent.drzavljanstvo
+                .strano.broj_pasosa
+            "
+            [ngModelOptions]="{ standalone: true }"
           />
           <label for="drzavljanstvo" id="pasos" style="text-align: center"
             >(бр. пасоша или ЕБС за стране држављане)</label
@@ -89,31 +98,65 @@
         type="text"
         id="prezime"
         class="txt-imput"
-        [(ngModel)]="obrazac.prezime"  [ngModelOptions]="{standalone: true}"/>
+        [(ngModel)]="
+          obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.prezime
+        "
+        [ngModelOptions]="{ standalone: true }" />
       | Име
-      <input type="text" id="ime" class="txt-imput" [(ngModel)]="obrazac.ime" />
+      <input
+        type="text"
+        id="ime"
+        class="txt-imput"
+        [(ngModel)]="
+          obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.ime
+        " />
       | Име родитеља
       <input
         type="text"
         id="imeRoditelja"
         class="txt-imput"
-        [(ngModel)]="obrazac.jmbg"   [ngModelOptions]="{standalone: true}"/>
+        [(ngModel)]="
+          obrazacSaglasnosti.evidencija_pacijent.pacijent.ime_roditelja
+        "
+        [ngModelOptions]="{ standalone: true }" />
       <br /><br />
       Пол:
-      <input type="radio" id="m" class="radio" [(ngModel)]="obrazac.pol"  [ngModelOptions]="{standalone: true}"/> М,
-      <input type="radio" id="z" class="radio" [(ngModel)]="obrazac.pol"  [ngModelOptions]="{standalone: true}"/> Ж |
-      Датум рођења
+      <input
+        type="radio"
+        id="m"
+        class="radio"
+        [(ngModel)]="
+          obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.pol
+        "
+        [ngModelOptions]="{ standalone: true }" />
+      М,
+      <input
+        type="radio"
+        id="z"
+        class="radio"
+        [(ngModel)]="
+          obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.pol
+        "
+        [ngModelOptions]="{ standalone: true }" />
+      Ж | Датум рођења
       <input
         type="text"
         id="datumRodjenja"
         class="txt-imput"
-        [(ngModel)]="obrazac.datumRodjenja"  [ngModelOptions]="{standalone: true}"/>
+        [(ngModel)]="
+          obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info
+            .datum_rodjenja
+        "
+        [ngModelOptions]="{ standalone: true }" />
       | Место рођења
       <input
         type="text"
         id="mestoRodjenja"
         class="txt-imput"
-        [(ngModel)]="obrazac.mestoRodjenja"  [ngModelOptions]="{standalone: true}"/>
+        [(ngModel)]="
+        obrazacSaglasnosti.evidencija_pacijent.pacijent.mesto_rodjenja
+        "
+        [ngModelOptions]="{ standalone: true }" />
       <br />
       <br />
       Адреса (улица и број)
@@ -121,25 +164,41 @@
         type="text"
         id="adresa"
         class="txt-imput"
-        [(ngModel)]="obrazac.adresa"  [ngModelOptions]="{standalone: true}"/>
+        [(ngModel)]="
+          obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.adresa
+            .Ulica
+        "
+        [ngModelOptions]="{ standalone: true }" />
+        и <input
+        type="text"
+        id="adresa"
+        class="txt-imput"
+        [(ngModel)]="
+          obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.adresa
+            .Broj
+        "
+        [ngModelOptions]="{ standalone: true }" />
       | Место/Насеље
       <input
         type="text"
         id="mesto"
         class="txt-imput"
-        [(ngModel)]="obrazac.mesto"  [ngModelOptions]="{standalone: true}"/><br /><br />
+        [(ngModel)]="
+          obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.adresa
+            .Mesto
+        "
+        [ngModelOptions]="{ standalone: true }" /><br /><br />
       Општина/Град
-      <input
-        type="text"
-        id="grad"
-        class="txt-imput"
-        [(ngModel)]="obrazac.grad"  [ngModelOptions]="{standalone: true}"/>
+      <input type="text" id="grad" class="txt-imput" />
       | Тел. фиксни
       <input
         type="text"
         id="fiksni"
         class="txt-imput"
-        [(ngModel)]="obrazac.fiksni"  [ngModelOptions]="{standalone: true}"/>
+        [(ngModel)]="
+          obrazacSaglasnosti.evidencija_pacijent.pacijent.kontakt.tel_fiksni
+        "
+        [ngModelOptions]="{ standalone: true }" />
       <div
         class="alert alert-danger"
         role="alert"
@@ -154,7 +213,10 @@
         type="text"
         id="mobilni"
         class="txt-imput"
-        [(ngModel)]="obrazac.mobilni"  [ngModelOptions]="{standalone: true}"/>
+        [(ngModel)]="
+          obrazacSaglasnosti.evidencija_pacijent.pacijent.kontakt.tel_mobilni
+        "
+        [ngModelOptions]="{ standalone: true }" />
       <div
         class="alert alert-danger"
         role="alert"
@@ -168,7 +230,10 @@
         type="text"
         id="mejl"
         class="txt-imput"
-        [(ngModel)]="obrazac.mejl"  [ngModelOptions]="{standalone: true}"/>
+        [(ngModel)]="
+          obrazacSaglasnosti.evidencija_pacijent.pacijent.kontakt.email
+        "
+        [ngModelOptions]="{ standalone: true }" />
       <div
         class="alert alert-danger"
         role="alert"
@@ -184,72 +249,131 @@
       type="radio"
       id="zaposlen"
       class="radio"
-      [(ngModel)]="obrazac.jmbg"  [ngModelOptions]="{standalone: true}"
+      [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
+      [ngModelOptions]="{ standalone: true }"
     />
     запослен,
     <input
       type="radio"
       id="nezaposlen"
       class="radio"
-      [(ngModel)]="obrazac.jmbg"  [ngModelOptions]="{standalone: true}"
+      [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
+      [ngModelOptions]="{ standalone: true }"
     />
     незапослен,
     <input
       type="radio"
       id="panzioner"
       class="radio"
-      [(ngModel)]="obrazac.jmbg"  [ngModelOptions]="{standalone: true}"
+      [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
+      [ngModelOptions]="{ standalone: true }"
     />
     пензионер,
-    <input type="radio" id="ucenik" class="radio" [(ngModel)]="obrazac.jmbg"  [ngModelOptions]="{standalone: true}"/>
+    <input
+      type="radio"
+      id="ucenik"
+      class="radio"
+      [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
+      [ngModelOptions]="{ standalone: true }"
+    />
     ученик,
-    <input type="radio" id="student" class="radio" [(ngModel)]="obrazac.jmbg"  [ngModelOptions]="{standalone: true}"/>
+    <input
+      type="radio"
+      id="student"
+      class="radio"
+      [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
+      [ngModelOptions]="{ standalone: true }"
+    />
     студент,
-    <input type="radio" id="dete" class="radio" [(ngModel)]="obrazac.jmbg"  [ngModelOptions]="{standalone: true}"/>
+    <input
+      type="radio"
+      id="dete"
+      class="radio"
+      [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
+      [ngModelOptions]="{ standalone: true }"
+    />
     дете<br /><br />
     <b>Занимање запосленог: </b>
-    <input type="radio" id="zz" class="radio" [(ngModel)]="obrazac.jmbg"  [ngModelOptions]="{standalone: true}"/>
+    <input
+      type="radio"
+      id="zz"
+      class="radio"
+      [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
+      [ngModelOptions]="{ standalone: true }"
+    />
     здравствена заштита,
-    <input type="radio" id="sz" class="radio" [(ngModel)]="obrazac.jmbg"  [ngModelOptions]="{standalone: true}"/>
+    <input
+      type="radio"
+      id="sz"
+      class="radio"
+      [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
+      [ngModelOptions]="{ standalone: true }"
+    />
     социјална заштита,
     <input
       type="radio"
       id="prosveta"
       class="radio"
-      [(ngModel)]="obrazac.jmbg"
+      [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
     />
     просвета,
-    <input type="radio" id="mup" class="radio" [(ngModel)]="obrazac.jmbg" />
+    <input
+      type="radio"
+      id="mup"
+      class="radio"
+      [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
+    />
     МУП,
-    <input type="radio" id="vojska" class="radio" [(ngModel)]="obrazac.jmbg" />
+    <input
+      type="radio"
+      id="vojska"
+      class="radio"
+      [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
+    />
     Војска РС,
-    <input type="radio" id="dr" class="radio" [(ngModel)]="obrazac.jmbg" />
+    <input
+      type="radio"
+      id="dr"
+      class="radio"
+      [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
+    />
     друго<br /><br />
     <b>Корисник установе соц. зашт. </b>
-    <input type="radio" id="da" class="radio" [(ngModel)]="obrazac.jmbg" /> ДА,
-    <input type="radio" id="ne" class="radio" [(ngModel)]="obrazac.jmbg" /> НЕ
-    <b>| Назив и општина седишта</b><br /><br />
+    <input
+      type="radio"
+      id="da"
+      class="radio"
+      [(ngModel)]="
+        obrazacSaglasnosti.evidencija_pacijent.pacijent.socijalna_zastita
+          .korisnik
+      "
+    />
+    ДА,
+    <input
+      type="radio"
+      id="ne"
+      class="radio"
+      [(ngModel)]="
+        obrazacSaglasnosti.evidencija_pacijent.pacijent.socijalna_zastita
+          .korisnik
+      "
+    />
+    НЕ <b>| Назив и општина седишта</b>
+    <input
+      type="text"
+      id="prosveta"
+      class="radio"
+      [(ngModel)]="
+        obrazacSaglasnosti.evidencija_pacijent.pacijent.socijalna_zastita
+          .sediste
+      "
+    /><br /><br />
     <b>Изјављујем да: </b>
-    <b
-      ><input
-        type="radio"
-        id="saglasan"
-        class="radio"
-        [(ngModel)]="obrazac.jmbg"  [ngModelOptions]="{standalone: true}"
-      />
-      CAГЛACAH САМ,</b
-    >
-    <b
-      ><input
-        type="radio"
-        id="nesaglasan"
-        class="radio"
-        [(ngModel)]="obrazac.jmbg"  [ngModelOptions]="{standalone: true}"
-      />
-      HИСАМ САГЛАСАН </b
+    <b><input type="radio" id="saglasan" class="radio" /> CAГЛACAH САМ,</b>
+    <b><input type="radio" id="nesaglasan" class="radio" /> HИСАМ САГЛАСАН </b
     >(означити) са спровођењем активне/пасивне<br />
     имунизације (уписати назив имунолошког лека):
-    <input type="text" [(ngModel)]="obrazac.jmbg"  [ngModelOptions]="{standalone: true}"/><br /><br />
+    <input type="text" /><br /><br />
 
     <b
       >Лекар ми је објаснио предности и ризике од спровођења активне/пасивне

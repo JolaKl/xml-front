@@ -8,7 +8,7 @@ export class ZahtevZaSertifikat {
     constructor(obj?: any) {
       this.razlog_podnosenja = (obj && obj.razlog_podnosenja) || null;
       this.mesto = (obj && obj.mesto) || null;
-      this.datum = (obj && obj.datum) || "2022-01-03";
+      this.datum = (obj && obj.datum) || null;
       this.pacijent = (obj && obj.pacijent) || new Osoba();
       this.dokument_id = (obj && obj.dokument_id) || null;
     }
@@ -20,7 +20,7 @@ export class ZahtevZaSertifikat {
     prezime: string;
     pol: string;
     datum_rodjenja: string;
-    broj_pasosa: String;
+    broj_pasosa: string;
   
     constructor(obj?: any) {
       this.jmbg = (obj && obj.jmbg) || null;

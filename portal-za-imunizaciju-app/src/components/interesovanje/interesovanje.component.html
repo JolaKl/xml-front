@@ -6,33 +6,41 @@
       Одаберите опцију: <br />
 
       <div id="grupa">
+        <fieldset id="drzavljanstvo">
         <input
           type="radio"
           id="one"
           class="radio"
+          name="drzavljanstvo"
           [(ngModel)]="interesovanje.podaci_o_osobi.drzavljanstvo"
           value="Državljanin Republike Srbije"
           [ngModelOptions]="{ standalone: true }"
+          required
         />
         Држављанин Републике Србије <br />
         <input
           type="radio"
           id="two"
           class="radio"
+          name="drzavljanstvo"
           [(ngModel)]="interesovanje.podaci_o_osobi.drzavljanstvo"
           value="Strani državljanin sa boravkom u RS"
           [ngModelOptions]="{ standalone: true }"
+          required
         />
         Страни држављанин са боравком у РС <br />
         <input
           type="radio"
           id="three"
           class="radio"
+          name="drzavljanstvo"
           [(ngModel)]="interesovanje.podaci_o_osobi.drzavljanstvo"
           value="Strani državljanin bez boravka u RS"
           [ngModelOptions]="{ standalone: true }"
+          required
         />
         Страни држављанин без боравка у РС <br /><br />
+      </fieldset>
       </div>
 
       ЈМБГ:
@@ -152,12 +160,14 @@
       произвођача за који Агенција за лекове и медицинска средства потврди
       безбедност, ефикасност и квалитет и изда дозволу за употребу лека: <br />
       <div id="grupa">
+        <fieldset id="tipVakcine">
         <input
           type="radio"
           id="pfizer"
           class="radio"
           value="Pfizer-BioNtech"
-          [(ngModel)]="interesovanje.opsti_podaci.lokacija_opstina"
+          name="tipVakcine"
+          [(ngModel)]="interesovanje.opsti_podaci.tip_vakcine"
           [ngModelOptions]="{ standalone: true }"
         />Pfizer-BioNTech <br />
         <input
@@ -165,7 +175,8 @@
           id="sputnik"
           class="radio"
           value="Sputnik V (Gamaleya istraživački centar)"
-          [(ngModel)]="interesovanje.opsti_podaci.lokacija_opstina"
+          name="tipVakcine"
+          [(ngModel)]="interesovanje.opsti_podaci.tip_vakcine"
           [ngModelOptions]="{ standalone: true }"
         />Sputnik V (Gamaleya истраживачки центар) <br />
         <input
@@ -173,7 +184,8 @@
           id="sinopharm"
           class="radio"
           value="Sinopharm"
-          [(ngModel)]="interesovanje.opsti_podaci.lokacija_opstina"
+          name="tipVakcine"
+          [(ngModel)]="interesovanje.opsti_podaci.tip_vakcine"
           [ngModelOptions]="{ standalone: true }"
         />Sinopharm
         <br />
@@ -182,7 +194,8 @@
           id="astraZeneca"
           class="radio"
           value="AstraZeneca"
-          [(ngModel)]="interesovanje.opsti_podaci.lokacija_opstina"
+          name="tipVakcine"
+          [(ngModel)]="interesovanje.opsti_podaci.tip_vakcine"
           [ngModelOptions]="{ standalone: true }"
         />AstraZeneca
         <br />
@@ -191,7 +204,8 @@
           id="moderna"
           class="radio"
           value="Moderna"
-          [(ngModel)]="interesovanje.opsti_podaci.lokacija_opstina"
+          name="tipVakcine"
+          [(ngModel)]="interesovanje.opsti_podaci.tip_vakcine"
           [ngModelOptions]="{ standalone: true }"
         />
         Moderna <br />
@@ -200,18 +214,21 @@
           id="biloSta"
           class="radio"
           value="Bilo koja"
-          [(ngModel)]="interesovanje.opsti_podaci.lokacija_opstina"
+          name="tipVakcine"
+          [(ngModel)]="interesovanje.opsti_podaci.tip_vakcine"
           [ngModelOptions]="{ standalone: true }"
         />
         Било која
+      </fieldset>
       </div>
       <br />
       Да ли сте добровољни давалац крви? <br />
       <div id="grupa">
+        <fieldset id="davalacKrvi">
         <input
           type="radio"
           id="da"
-          class="radio"
+          name="davalacKrvi"
           value="true"
           [(ngModel)]="interesovanje.opsti_podaci.davalac_krvi"
           [ngModelOptions]="{ standalone: true }"
@@ -220,19 +237,31 @@
         <input
           type="radio"
           id="ne"
-          class="radio"
+          name="davalacKrvi"
           value="false"
           [(ngModel)]="interesovanje.opsti_podaci.davalac_krvi"
           [ngModelOptions]="{ standalone: true }"
         />
         Не <br />
+      </fieldset>
       </div>
-      <br /><br /><br /><br /><br />
-      дана 14.02.2022. године <br /><br /><br />
+      <br /><br />
+      дана 14.02.2022. године <br />
       <div class="form-group">
         <button class="btn btn-primary btn-block" id="ok" (click)="onPotvrdi()">
           Потврди
         </button>
+      </div>
+
+      <div class="form-group">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          id="error"
+          *ngIf="f.submitted && !validForm"
+        >
+          Invalid username or password.
+        </div>
       </div>
     </div>
   </form>

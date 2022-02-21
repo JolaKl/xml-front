@@ -29,23 +29,27 @@
   <br />
   <p>Ime i prezime/First and Last Name</p>
 
-  <b>Датум рођења:</b><input type="text" required /><br />
+  <b>Датум рођења:</b><input type="date" required [(ngModel)]="potvrdaVakcinacije.osoba.datum_rodjenja"
+  [ngModelOptions]="{ standalone: true }"/><br />
   <p>Datum rođenja/Date Of Birth</p>
 
-  <b> Пол: </b> <input type="radio" id="m" class="radio" /> Мушки
-  <input type="radio" id="z" class="radio" /> Женски <br />
+  <b> Пол: </b> <input type="radio" id="m" class="radio" [(ngModel)]="potvrdaVakcinacije.osoba.pol"
+  [ngModelOptions]="{ standalone: true }"/> Мушки
+  <input type="radio" id="z" class="radio" [(ngModel)]="potvrdaVakcinacije.osoba.pol"
+  [ngModelOptions]="{ standalone: true }"/> Женски <br />
   <p>Pol/Gender</p>
 
-  <b>ЈМБГ:</b><input type="text" required /><br />
+  <b>ЈМБГ:</b><input type="text" required [(ngModel)]="potvrdaVakcinacije.osoba.jmbg"
+  [ngModelOptions]="{ standalone: true }"/><br />
   <p>JMBG/Personal No</p>
 
   <b
-    >Датум давања и број серије прве дозе вакцине:
-    <input type="text" required />, серија:</b
-  ><input type="text" required /><br />
+    >Датум давања <input type="date" required />и број серије прве дозе вакцине:
+    <input type="text" required /></b
+  ><br />
   <p>Datum vakcinacije/Vaccination Date</p>
 
-  <b>Датум давања и број серије друге дозе вакцине:</b
+  <b>Датум давања <input type="date" required /> и број серије друге дозе вакцине:</b
   ><input type="text" required /><br />
   <p>Datum druge vakcinacije/Second Vaccination Date</p>
 
@@ -55,10 +59,18 @@
     Zdravstvena ustanova koja vakciniše/ Health care institution of vaccination
   </p>
 
-  <b>Назив вакцине:</b><input type="text" required /><br />
+  <b>Назив вакцине:</b>
+  <select name="pol" >
+    <option value="Pfizer-BioNtech">Pfizer-BioNTech</option>
+    <option value="Sputnik V (Gamaleya istraživački centar)">Sputnik V (Gamaleya истраживачки центар)</option>
+    <option value="Sinopharm">Sinopharm</option>
+    <option value="AstraZeneca">AstraZeneca</option>
+    <option value="Moderna">Moderna</option>
+    <option value="Bilo koja">Било која</option>
+  </select><br />
   <p>Naziv vakcine/Name of vaccination</p>
 
-  <b>Датум издавања потврде:</b><input type="text" required /><br />
+  <b>Датум издавања потврде:</b><input type="date" required /><br />
   <p>Datum izdavanja potvrde/Confirmation Release Date</p>
 
   <div id="desno">

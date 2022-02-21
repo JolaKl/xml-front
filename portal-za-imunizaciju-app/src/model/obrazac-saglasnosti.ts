@@ -8,10 +8,8 @@ export class ObrazacSaglasnosti {
 
 export class EvidencijaPacijent {
   pacijent: Pacijent;
-  saglasnost: Saglasnost;
   constructor(obj?: any) {
     this.pacijent = (obj && obj.pacijent) || null;
-    this.saglasnost = (obj && obj.saglasnost) || null;
   }
 }
 
@@ -96,14 +94,14 @@ export class Kontakt {
 }
 
 export class Adresa {
-  mesto: string;
-  ulica: string;
-  broj: string;
+  Mesto: string;
+  Ulica: string;
+  Broj: string;
 
   constructor(obj?: any) {
-    this.mesto = (obj && obj.mesto) || null;
-    this.ulica = (obj && obj.ulica) || null;
-    this.broj = (obj && obj.broj) || null;
+    this.Mesto = (obj && obj.Mesto) || null;
+    this.Ulica = (obj && obj.Ulica) || null;
+    this.Broj = (obj && obj.Broj) || null;
   }
 }
 
