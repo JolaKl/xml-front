@@ -7,13 +7,15 @@ import { InteresovanjeComponent } from 'src/components/interesovanje/interesovan
 import { ObrazacSaglasnostiZaImunizacijuComponent } from 'src/components/obrazac-saglasnosti-za-imunizaciju/obrazac-saglasnosti-za-imunizaciju.component';
 import { ZahtevZaSertifikatComponent } from 'src/components/zahtev-za-sertifikat/zahtev-za-sertifikat.component';
 import { PotvrdaOVakcinacijiComponent } from 'src/components/potvrda-o-vakcinaciji/potvrda-o-vakcinaciji.component';
+import { RegistracijaComponent } from 'src/components/registracija/registracija.component';
 
 
 export const routes :Routes = [
   {path: 'interesovanje', component: InteresovanjeComponent},
   {path: 'obrazac-saglasnosti', component: ObrazacSaglasnostiZaImunizacijuComponent},
   {path: 'sertifikat-zahtev', component: ZahtevZaSertifikatComponent},
-  {path: 'potvrda-vakcinacije', component: PotvrdaOVakcinacijiComponent}
+  {path: 'potvrda-vakcinacije', component: PotvrdaOVakcinacijiComponent},
+  {path: 'registracija', component: RegistracijaComponent}
   
 ];
 

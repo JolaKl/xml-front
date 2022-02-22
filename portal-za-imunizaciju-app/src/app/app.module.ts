@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { InteresovanjeComponent } from 'src/components/interesovanje/interesovanje.component';
 import { ObrazacSaglasnostiZaImunizacijuComponent } from 'src/components/obrazac-saglasnosti-za-imunizaciju/obrazac-saglasnosti-za-imunizaciju.component';
 import { PotvrdaOVakcinacijiComponent } from 'src/components/potvrda-o-vakcinaciji/potvrda-o-vakcinaciji.component';
+import { RegistracijaComponent } from 'src/components/registracija/registracija.component';
 import { ZahtevZaSertifikatComponent } from 'src/components/zahtev-za-sertifikat/zahtev-za-sertifikat.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
@@ -16,7 +17,8 @@ import { AppComponent } from './app.component';
     InteresovanjeComponent,
     ObrazacSaglasnostiZaImunizacijuComponent,
     ZahtevZaSertifikatComponent,
-    PotvrdaOVakcinacijiComponent
+    PotvrdaOVakcinacijiComponent,
+    RegistracijaComponent
   ],
   imports: [
     BrowserModule,

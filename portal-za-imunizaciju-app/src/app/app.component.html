@@ -1,34 +1,34 @@
-
-
 <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
   <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" [routerLink]="['interesovanje']">Interesovanje</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['obrazac-saglasnosti']">Saglasnost</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['sertifikat-zahtev']">Sertifikat</a>
-          </li> 
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['potvrda-vakcinacije']">Potvrda o vakcinaciji</a>
-          </li>  
-      </ul>
-      <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['interesovanje']">Интересовање</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['obrazac-saglasnosti']"
+          >Сагласност</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['sertifikat-zahtev']">Сертификат</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['potvrda-vakcinacije']"
+          >Потврда о вакцинацији</a
+        >
+      </li>
+    </ul>
+    <form class="form-inline mt-2 mt-md-0">
+      <a class="nav-link" [routerLink]="['registracija']">Регистрација</a>
+      <a class="nav-link" [routerLink]="['registracija']">Пријави се</a>
+    </form>
   </div>
 </div>
 
-
 <div class="container content-container">
- <div class="row">
-   <div class="col">
-     <router-outlet></router-outlet>
-   </div>
- </div>
+  <div class="row">
+    <div class="col">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
-
