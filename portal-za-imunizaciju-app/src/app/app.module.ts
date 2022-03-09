@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { InteresovanjeComponent } from 'src/components/interesovanje/interesovanje.component';
+import { LoginComponent } from 'src/components/login/login.component';
 import { ObrazacSaglasnostiZaImunizacijuComponent } from 'src/components/obrazac-saglasnosti-za-imunizaciju/obrazac-saglasnosti-za-imunizaciju.component';
 import { PotvrdaOVakcinacijiComponent } from 'src/components/potvrda-o-vakcinaciji/potvrda-o-vakcinaciji.component';
 import { RegistracijaComponent } from 'src/components/registracija/registracija.component';
@@ -18,14 +20,16 @@ import { AppComponent } from './app.component';
     ObrazacSaglasnostiZaImunizacijuComponent,
     ZahtevZaSertifikatComponent,
     PotvrdaOVakcinacijiComponent,
-    RegistracijaComponent
+    RegistracijaComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PatternValidator } from '@angular/forms';
 import { ObrazacInteresovanja } from 'src/model/interesovanje';
 import * as JsonToXML from 'js2xmlparser';
+import { InteresovaneService } from 'src/service/interesovane.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-interesovanje',
@@ -24,15 +26,21 @@ export class InteresovanjeComponent implements OnInit {
   };
   public validForm: Boolean = true;
 
-  constructor() {}
+  constructor(private interesovaneService:InteresovaneService) {}
 
   ngOnInit(): void {}
 
   onPotvrdi() {
     this.validForm = this.checkForm();
     console.log(this.checkForm());
-    //console.log(JsonToXML.parse("obrazac_interesovanja", this.interesovanje))
-    //console.log(this.interesovanje);
+    var obrazac = JsonToXML.parse("obrazac_interesovanja", this.interesovanje);
+    
+    this.interesovaneService.addObrazac(obrazac).subscribe({
+      next: (response: any) => {},
+      error: (error: HttpErrorResponse) => {
+        alert("greska kod dodavanja");
+      },
+    });
   }
 
   checkMobilni(): Boolean {

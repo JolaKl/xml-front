@@ -36,11 +36,13 @@ export class ObrazacInteresovanja {
     tip_vakcine: string;
     davalac_krvi: boolean;
     datum_podnosenja: string;
+    idPodnosioca: string;
    
     constructor(obj?: any) {
       this.lokacija_opstina = (obj && obj.lokacija_opstina) || null;
       this.tip_vakcine = (obj && obj.tip_vakcine) || null;
       this.davalac_krvi = (obj && obj.davalac_krvi) || null;
       this.datum_podnosenja = (obj && obj.datum_podnosenja) || "2022-01-03";
+      this.idPodnosioca = (obj && obj.idPodnosioca) || "2";
     }
   }
