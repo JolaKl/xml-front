@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PatternValidator } from '@angular/forms';
 import { ObrazacInteresovanja } from 'src/model/interesovanje';
-import * as JsonToXML from 'js2xmlparser';
-import { InteresovaneService } from 'src/service/interesovane.service';
+import { InteresovanjeService } from 'src/service/interesovanje.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import {interesovanjeToXml} from "../../service/json-to-xml.service";
 
 @Component({
   selector: 'app-interesovanje',
@@ -26,18 +26,22 @@ export class InteresovanjeComponent implements OnInit {
   };
   public validForm: Boolean = true;
 
-  constructor(private interesovaneService:InteresovaneService) {}
+  constructor(private interesovanjeService:InteresovanjeService) {}
 
   ngOnInit(): void {}
 
   onPotvrdi() {
     this.validForm = this.checkForm();
     console.log(this.checkForm());
-    var obrazac = JsonToXML.parse("obrazac_interesovanja", this.interesovanje);
-    
-    this.interesovaneService.addObrazac(obrazac).subscribe({
-      next: (response: any) => {},
+
+    const obrazac = interesovanjeToXml(this.interesovanje);
+
+    this.interesovanjeService.addObrazac(obrazac).subscribe({
+      next: (response: any) => {
+        console.log('Uspesno dodato:', response)
+      },
       error: (error: HttpErrorResponse) => {
+        console.log(error.message)
         alert("greska kod dodavanja");
       },
     });

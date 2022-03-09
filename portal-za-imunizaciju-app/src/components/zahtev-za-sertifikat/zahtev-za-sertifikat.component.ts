@@ -9,7 +9,7 @@ import * as JsonToXML from 'js2xmlparser';
 })
 export class ZahtevZaSertifikatComponent implements OnInit {
   public zahtevZaSertifikat: ZahtevZaSertifikat = new ZahtevZaSertifikat();
-  public imeIperzime: string = '';
+  public imeIprezime: string = '';
   public validForm: Boolean = true;
   constructor() {}
 
@@ -21,7 +21,7 @@ export class ZahtevZaSertifikatComponent implements OnInit {
     console.log(this.zahtevZaSertifikat);
     this.validForm = this.checkForm();
 
-    /*var naziv: string[] = this.imeIperzime.split(' ');
+    /*var naziv: string[] = this.imeIprezime.split(' ');
     this.zahtevZaSertifikat.pacijent.ime = naziv[0];
     this.zahtevZaSertifikat.pacijent.prezime = naziv[1];
     console.log(JsonToXML.parse("zahtev", this.zahtevZaSertifikat))*/
@@ -40,7 +40,7 @@ export class ZahtevZaSertifikatComponent implements OnInit {
   checkForm(): Boolean {
     //dodati i provjeru za jmbg i pasos
     if (
-      this.imeIperzime.split(' ').length < 2 ||
+      this.imeIprezime.split(' ').length < 2 ||
       this.zahtevZaSertifikat.pacijent.datum_rodjenja == null ||
       this.zahtevZaSertifikat.pacijent.pol == null ||
       this.zahtevZaSertifikat.razlog_podnosenja == null ||
@@ -55,7 +55,7 @@ export class ZahtevZaSertifikatComponent implements OnInit {
 
   setDate(): void{
     var dateObj = new Date();
-    var month = dateObj.getUTCMonth() + 1; 
+    var month = dateObj.getUTCMonth() + 1;
     var day = dateObj.getUTCDate();
     var year = dateObj.getUTCFullYear();
     this.zahtevZaSertifikat.datum = day + '.' + month + '.' + year + '.';
