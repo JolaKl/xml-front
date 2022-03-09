@@ -120,15 +120,19 @@
         "
         [ngModelOptions]="{ standalone: true }" />
       <br /><br />
+      <fieldset id="pol">
       Пол:
+      
       <input
         type="radio"
         id="m"
         class="radio"
+        name="pol"
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.pol
         "
-        [ngModelOptions]="{ standalone: true }" />
+        [ngModelOptions]="{ standalone: true }" 
+        />
       М,
       <input
         type="radio"
@@ -138,11 +142,12 @@
           obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.pol
         "
         [ngModelOptions]="{ standalone: true }" />
-      Ж | Датум рођења
+      Ж </fieldset> | Датум рођења
       <input
         type="text"
         id="datumRodjenja"
         class="txt-imput"
+        name="pol"
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info
             .datum_rodjenja
@@ -244,12 +249,15 @@
       </div>
       <br /><br
     /></b>
+    <fieldset id="radni_status">
     <b>Радни статус: </b>
     <input
       type="radio"
       id="zaposlen"
       class="radio"
+      name="radni_status"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
+      value="запослен"
       [ngModelOptions]="{ standalone: true }"
     />
     запослен,
@@ -257,7 +265,9 @@
       type="radio"
       id="nezaposlen"
       class="radio"
+      name="radni_status"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
+      value="незапослен"
       [ngModelOptions]="{ standalone: true }"
     />
     незапослен,
@@ -265,7 +275,9 @@
       type="radio"
       id="panzioner"
       class="radio"
+      name="radni_status"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
+      value="пензионер"
       [ngModelOptions]="{ standalone: true }"
     />
     пензионер,
@@ -273,7 +285,9 @@
       type="radio"
       id="ucenik"
       class="radio"
+      name="radni_status"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
+      value="ученик"
       [ngModelOptions]="{ standalone: true }"
     />
     ученик,
@@ -281,7 +295,9 @@
       type="radio"
       id="student"
       class="radio"
+      name="radni_status"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
+      value="студент"
       [ngModelOptions]="{ standalone: true }"
     />
     студент,
@@ -289,16 +305,22 @@
       type="radio"
       id="dete"
       class="radio"
+      name="radni_status"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
+      value="дете"
       [ngModelOptions]="{ standalone: true }"
     />
     дете<br /><br />
+  </fieldset>
+  <fieldset id="zanimanje">
     <b>Занимање запосленог: </b>
     <input
       type="radio"
       id="zz"
       class="radio"
+      name="zanimanje"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
+      value="здравствена заштита"
       [ngModelOptions]="{ standalone: true }"
     />
     здравствена заштита,
@@ -306,7 +328,9 @@
       type="radio"
       id="sz"
       class="radio"
+      name="zanimanje"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
+      value="социјална заштита"
       [ngModelOptions]="{ standalone: true }"
     />
     социјална заштита,
@@ -314,49 +338,63 @@
       type="radio"
       id="prosveta"
       class="radio"
+      name="zanimanje"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
+      value="просвета"
     />
     просвета,
     <input
       type="radio"
       id="mup"
       class="radio"
+      name="zanimanje"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
+      value="МУП"
     />
     МУП,
     <input
       type="radio"
       id="vojska"
       class="radio"
+      name="zanimanje"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
+      value="Војска РС"
     />
     Војска РС,
     <input
       type="radio"
       id="dr"
       class="radio"
+      name="zanimanje"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
+      value="друго"
     />
-    друго<br /><br />
+    друго</fieldset><br />
+    <fieldset id="socijalna_zastita">
     <b>Корисник установе соц. зашт. </b>
     <input
       type="radio"
       id="da"
-      class="radio"
+      name="socijalna_zastita"
       [(ngModel)]="
         obrazacSaglasnosti.evidencija_pacijent.pacijent.socijalna_zastita
           .korisnik
       "
+      value="true"
+      [ngModelOptions]="{ standalone: true }"
     />
     ДА,
     <input
       type="radio"
       id="ne"
+      name="socijalna_zastita"
       class="radio"
       [(ngModel)]="
         obrazacSaglasnosti.evidencija_pacijent.pacijent.socijalna_zastita
           .korisnik
       "
+      value="false"
+      [ngModelOptions]="{ standalone: true }"
     />
     НЕ <b>| Назив и општина седишта</b>
     <input
@@ -367,12 +405,13 @@
         obrazacSaglasnosti.evidencija_pacijent.pacijent.socijalna_zastita
           .sediste
       "
-    /><br /><br />
+    /></fieldset><br />
+    <fieldset id="saglasnost">
     <b>Изјављујем да: </b>
-    <b><input type="radio" id="saglasan" class="radio" [(ngModel)]="obrazacSaglasnosti.saglasnost.izjava" value="true"/> CAГЛACAH САМ,</b>
-    <b><input type="radio" id="nesaglasan" class="radio" [(ngModel)]="obrazacSaglasnosti.saglasnost.izjava" value="false"/> HИСАМ САГЛАСАН </b>
+    <b><input type="radio" id="saglasan" class="radio" name="saglasnost" [(ngModel)]="obrazacSaglasnosti.saglasnost.izjava" value="true"/> CAГЛACAH САМ,</b>
+    <b><input type="radio" id="nesaglasan" class="radio" name="saglasnost" [(ngModel)]="obrazacSaglasnosti.saglasnost.izjava" value="false"/> HИСАМ САГЛАСАН </b>
     (означити) са спровођењем активне/пасивне<br />
-    имунизације (уписати назив имунолошког лека):
+    имунизације (уписати назив имунолошког лека):</fieldset>
     <input type="text" [(ngModel)]="obrazacSaglasnosti.saglasnost.naziv_leka"/><br /><br />
 
     <b>Лекар ми је објаснио предности и ризике од спровођења активне/пасивне
