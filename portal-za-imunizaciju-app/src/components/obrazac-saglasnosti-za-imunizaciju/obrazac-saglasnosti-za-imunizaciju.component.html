@@ -369,16 +369,15 @@
       "
     /><br /><br />
     <b>Изјављујем да: </b>
-    <b><input type="radio" id="saglasan" class="radio" /> CAГЛACAH САМ,</b>
-    <b><input type="radio" id="nesaglasan" class="radio" /> HИСАМ САГЛАСАН </b
-    >(означити) са спровођењем активне/пасивне<br />
+    <b><input type="radio" id="saglasan" class="radio" [(ngModel)]="obrazacSaglasnosti.saglasnost.izjava" value="true"/> CAГЛACAH САМ,</b>
+    <b><input type="radio" id="nesaglasan" class="radio" [(ngModel)]="obrazacSaglasnosti.saglasnost.izjava" value="false"/> HИСАМ САГЛАСАН </b>
+    (означити) са спровођењем активне/пасивне<br />
     имунизације (уписати назив имунолошког лека):
-    <input type="text" /><br /><br />
+    <input type="text" [(ngModel)]="obrazacSaglasnosti.saglasnost.naziv_leka"/><br /><br />
 
-    <b
-      >Лекар ми је објаснио предности и ризике од спровођења активне/пасивне
-      имунизације наведеним имунолошким леком.</b
-    ><br /><br />
+    <b>Лекар ми је објаснио предности и ризике од спровођења активне/пасивне
+      имунизације наведеним имунолошким леком.</b>
+    <br /><br />
 
     <div class="form-group">
       <button class="btn btn-primary btn-block" id="ok" (click)="onPotvrdi()">

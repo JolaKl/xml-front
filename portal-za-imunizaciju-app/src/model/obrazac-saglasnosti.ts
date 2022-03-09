@@ -1,8 +1,10 @@
 export class ObrazacSaglasnosti {
   evidencija_pacijent: EvidencijaPacijent;
+  saglasnost: Saglasnost
 
   constructor(obj?: any) {
     this.evidencija_pacijent = (obj && obj.evidencija_pacijent) || null;
+    this.saglasnost = (obj && obj.saglasnost) || null;
   }
 }
 
@@ -94,6 +96,7 @@ export class Kontakt {
 }
 
 export class Adresa {
+  Opstina: string;
   Mesto: string;
   Ulica: string;
   Broj: string;
@@ -102,6 +105,7 @@ export class Adresa {
     this.Mesto = (obj && obj.Mesto) || null;
     this.Ulica = (obj && obj.Ulica) || null;
     this.Broj = (obj && obj.Broj) || null;
+    this.Opstina =(obj && obj.Opstina) || null;
   }
 }
 

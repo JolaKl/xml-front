@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as JsonToXML from "js2xmlparser";
 import { Drzavljanstvo, EvidencijaPacijent, Kontakt, ObrazacSaglasnosti, Osoba, Pacijent, Saglasnost, SocijalnaZastita, SrpskoDrzavljanstvo } from 'src/model/obrazac-saglasnosti';
+import {obrazacSaglasnostiToXml} from "../../service/json-to-xml.service";
+import {ObrazacSaglasnostiService} from "../../service/obrazac-saglasnosti.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-obrazac-saglasnosti-za-imunizaciju',
@@ -11,19 +14,33 @@ export class ObrazacSaglasnostiZaImunizacijuComponent implements OnInit {
 
   public obrazacSaglasnosti: ObrazacSaglasnosti = new ObrazacSaglasnosti();
 
-  constructor() { this.obrazacSaglasnosti.evidencija_pacijent = new EvidencijaPacijent()
+  constructor(private obrazacSaglasnostiService: ObrazacSaglasnostiService) { this.obrazacSaglasnosti.evidencija_pacijent = new EvidencijaPacijent()
   this.obrazacSaglasnosti.evidencija_pacijent.pacijent = new Pacijent();
   this.obrazacSaglasnosti.evidencija_pacijent.pacijent.drzavljanstvo = new Drzavljanstvo();
   this.obrazacSaglasnosti.evidencija_pacijent.pacijent.drzavljanstvo.srpsko = new SrpskoDrzavljanstvo();
   this.obrazacSaglasnosti.evidencija_pacijent.pacijent.kontakt = new Kontakt();
   this.obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info = new Osoba();
   this.obrazacSaglasnosti.evidencija_pacijent.pacijent.socijalna_zastita = new SocijalnaZastita();
- }
+  this.obrazacSaglasnosti.saglasnost = new Saglasnost();
+
+  }
 
   ngOnInit(): void {
   }
 
   onPotvrdi(){
+    const obrazac = obrazacSaglasnostiToXml(this.obrazacSaglasnosti)
+
+    this.obrazacSaglasnostiService.addObrazacSaglasnosti(obrazac).subscribe({
+      next: (response: any) => {
+        console.log('Uspesno dodato:', response)
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error.message)
+        alert("greska kod dodavanja");
+      },
+    })
+
     console.log(JsonToXML.parse("person", this.obrazacSaglasnosti))
     console.log(this.obrazacSaglasnosti);
   }
@@ -49,7 +66,7 @@ export class ObrazacSaglasnostiZaImunizacijuComponent implements OnInit {
   }
 
   checkBrojPasosa(): Boolean{
-    
+
     const mobilniPattern = new RegExp("[0-9]{9,10}");
     return !mobilniPattern.test(this.obrazacSaglasnosti.evidencija_pacijent.pacijent.drzavljanstvo.strano.broj_pasosa);
   }
