@@ -3,15 +3,15 @@ export class ObrazacSaglasnosti {
   saglasnost: Saglasnost
 
   constructor(obj?: any) {
-    this.evidencija_pacijent = (obj && obj.evidencija_pacijent) || null;
-    this.saglasnost = (obj && obj.saglasnost) || null;
+    this.evidencija_pacijent = (obj && obj.evidencija_pacijent) || new EvidencijaPacijent();
+    this.saglasnost = (obj && obj.saglasnost) || new Saglasnost();
   }
 }
 
 export class EvidencijaPacijent {
   pacijent: Pacijent;
   constructor(obj?: any) {
-    this.pacijent = (obj && obj.pacijent) || null;
+    this.pacijent = (obj && obj.pacijent) || new Pacijent();
   }
 }
 
@@ -26,14 +26,14 @@ export class Pacijent {
   mesto_rodjenja: string;
 
   constructor(obj?: any) {
-    this.drzavljanstvo = (obj && obj.drzavljanstvo) || null;
-    this.pacijent_info = (obj && obj.pacijent_info) || null;
-    this.kontakt = (obj && obj.kontakt) || null;
-    this.radni_status = (obj && obj.radni_status) || null;
-    this.zanimanje = (obj && obj.zanimanje) || null;
-    this.socijalna_zastita = (obj && obj.socijalna_zastita) || null;
-    this.ime_roditelja = (obj && obj.ime_roditelja) || null;
-    this.mesto_rodjenja = (obj && obj.mesto_rodjenja) || null;
+    this.drzavljanstvo = (obj && obj.drzavljanstvo) || new Drzavljanstvo();
+    this.pacijent_info = (obj && obj.pacijent_info) || new Osoba();
+    this.kontakt = (obj && obj.kontakt) || new Kontakt();
+    this.radni_status = (obj && obj.radni_status) || "";
+    this.zanimanje = (obj && obj.zanimanje) || "";
+    this.socijalna_zastita = (obj && obj.socijalna_zastita) || new SocijalnaZastita();
+    this.ime_roditelja = (obj && obj.ime_roditelja) || "";
+    this.mesto_rodjenja = (obj && obj.mesto_rodjenja) || "";
   }
 }
 
@@ -42,8 +42,8 @@ export class Drzavljanstvo {
   srpsko: SrpskoDrzavljanstvo;
 
   constructor(obj?: any) {
-    this.strano = (obj && obj.strano) || null;
-    this.srpsko = (obj && obj.srpsko) || null;
+    this.strano = (obj && obj.strano) || new StranoDrzavljanstvo();
+    this.srpsko = (obj && obj.srpsko) || new SrpskoDrzavljanstvo();
   }
 }
 
@@ -60,8 +60,8 @@ export class StranoDrzavljanstvo {
   broj_pasosa: string;
 
   constructor(obj?: any) {
-    this.drzava = (obj && obj.drzava) || null;
-    this.broj_pasosa = (obj && obj.broj_pasosa) || null;
+    this.drzava = (obj && obj.drzava) || "";
+    this.broj_pasosa = (obj && obj.broj_pasosa) || "";
   }
 }
 
@@ -75,11 +75,11 @@ export class Osoba {
 
   constructor(obj?: any) {
     this.jmbg = (obj && obj.jmbg) || null;
-    this.ime = (obj && obj.ime) || null;
-    this.prezime = (obj && obj.prezime) || null;
-    this.pol = (obj && obj.pol) || null;
+    this.ime = (obj && obj.ime) || "";
+    this.prezime = (obj && obj.prezime) || "";
+    this.pol = (obj && obj.pol) || "M";
     this.datum_rodjenja = (obj && obj.datum_rodjenja) || null;
-    this.adresa = (obj && obj.adresa) || null;
+    this.adresa = (obj && obj.adresa) || new Adresa();
   }
 }
 
@@ -102,10 +102,10 @@ export class Adresa {
   Broj: string;
 
   constructor(obj?: any) {
-    this.Mesto = (obj && obj.Mesto) || null;
-    this.Ulica = (obj && obj.Ulica) || null;
-    this.Broj = (obj && obj.Broj) || null;
-    this.Opstina =(obj && obj.Opstina) || null;
+    this.Mesto = (obj && obj.Mesto) || "";
+    this.Ulica = (obj && obj.Ulica) || "";
+    this.Broj = (obj && obj.Broj) || "";
+    this.Opstina =(obj && obj.Opstina) || "";
   }
 }
 
@@ -115,7 +115,7 @@ export class SocijalnaZastita {
 
   constructor(obj?: any) {
     this.korisnik = (obj && obj.korisnik) || null;
-    this.sediste = (obj && obj.sediste) || null;
+    this.sediste = (obj && obj.sediste) || new SedisteSocijalneZastite();
   }
 }
 
@@ -124,8 +124,8 @@ export class SedisteSocijalneZastite {
   opstina: string;
 
   constructor(obj?: any) {
-    this.naziv = (obj && obj.naziv) || null;
-    this.opstina = (obj && obj.opstina) || null;
+    this.naziv = (obj && obj.naziv) || "";
+    this.opstina = (obj && obj.opstina) || "";
   }
 }
 
@@ -134,7 +134,7 @@ export class Saglasnost {
   naziv_leka: string;
 
   constructor(obj?: any) {
-    this.izjava = (obj && obj.izjava) || null;
-    this.naziv_leka = (obj && obj.naziv_leka) || null;
+    this.izjava = (obj && obj.izjava) || "";
+    this.naziv_leka = (obj && obj.naziv_leka) || "";
   }
 }
