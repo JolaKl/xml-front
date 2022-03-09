@@ -1,0 +1,73 @@
+<div class="col-md-12 mt-3">
+    <div class="card card-container container d-flex justify-content-center">
+      <img
+        id="profile-img"
+        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        class="center"
+      />
+      <form
+        *ngIf="!isLoggedIn"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="username">Корисничко име</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            id="username"
+            [(ngModel)]="form.username"
+            required
+            #username="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            role="alert"
+            id="usernameError"
+            *ngIf="username.errors && f.submitted"
+          >
+            Наведите корисничко име.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Лозинка</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            id="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="6"
+            #password="ngModel"
+          />
+          <div
+            class="alert alert-danger"
+            role="alert"
+            id="passwordError"
+            *ngIf="password.errors && f.submitted"
+          >
+            Наведите лозинку.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" id="login" (click)="onSubmit()">Региструј се</button>
+        </div>
+        <div class="form-group">
+          <div
+            class="alert alert-danger"
+            role="alert"
+            id="error"
+            *ngIf="f.submitted && isLoginFailed"
+          >
+            Невалидно корисничко име или лозинка.
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
