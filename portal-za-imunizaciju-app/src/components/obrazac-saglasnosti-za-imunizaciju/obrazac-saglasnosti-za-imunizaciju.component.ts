@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as JsonToXML from "js2xmlparser";
 import { Drzavljanstvo, EvidencijaPacijent, Kontakt, ObrazacSaglasnosti, Osoba, Pacijent, Saglasnost, SocijalnaZastita, SrpskoDrzavljanstvo } from 'src/model/obrazac-saglasnosti';
 import {obrazacSaglasnostiToXml} from "../../service/json-to-xml.service";
 import {ObrazacSaglasnostiService} from "../../service/obrazac-saglasnosti.service";
@@ -41,7 +40,7 @@ export class ObrazacSaglasnostiZaImunizacijuComponent implements OnInit {
       },
     })
 
-    console.log(JsonToXML.parse("person", this.obrazacSaglasnosti))
+    // console.log(JsonToXML.parse("person", this.obrazacSaglasnosti))
     console.log(this.obrazacSaglasnosti);
   }
 

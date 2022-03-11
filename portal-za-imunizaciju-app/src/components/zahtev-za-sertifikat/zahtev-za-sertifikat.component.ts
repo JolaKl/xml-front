@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ZahtevZaSertifikat } from 'src/model/zahtev-za-sertifikat';
-import * as JsonToXML from 'js2xmlparser';
+import {Component, OnInit} from '@angular/core';
+import {ZahtevZaSertifikat} from 'src/model/zahtev-za-sertifikat';
+import {zahtevZaSertifikatToXml} from "../../service/json-to-xml.service";
+import {ZahtevZaSertifikatService} from "../../service/zahtev-za-sertifikat.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-zahtev-za-sertifikat',
@@ -11,7 +13,9 @@ export class ZahtevZaSertifikatComponent implements OnInit {
   public zahtevZaSertifikat: ZahtevZaSertifikat = new ZahtevZaSertifikat();
   public imeIprezime: string = '';
   public validForm: Boolean = true;
-  constructor() {}
+
+  constructor(private zahtevZaSertifikatService: ZahtevZaSertifikatService) {
+  }
 
   ngOnInit(): void {
     this.setDate();
@@ -20,6 +24,19 @@ export class ZahtevZaSertifikatComponent implements OnInit {
   onPotvrdi() {
     console.log(this.zahtevZaSertifikat);
     this.validForm = this.checkForm();
+
+    const zahtevXml = zahtevZaSertifikatToXml(this.zahtevZaSertifikat)
+
+    this.zahtevZaSertifikatService.addZahtevZaSertifikat(zahtevXml).subscribe({
+      next: (response: any) => {
+        console.log('Uspesno dodato:', response)
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error.message)
+        alert("greska kod dodavanja");
+      }
+    })
+
 
     /*var naziv: string[] = this.imeIprezime.split(' ');
     this.zahtevZaSertifikat.pacijent.ime = naziv[0];
@@ -53,7 +70,7 @@ export class ZahtevZaSertifikatComponent implements OnInit {
     return true;
   }
 
-  setDate(): void{
+  setDate(): void {
     var dateObj = new Date();
     var month = dateObj.getUTCMonth() + 1;
     var day = dateObj.getUTCDate();

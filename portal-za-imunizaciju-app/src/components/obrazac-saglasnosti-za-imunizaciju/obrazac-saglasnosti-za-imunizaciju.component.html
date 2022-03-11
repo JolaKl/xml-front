@@ -122,7 +122,7 @@
       <br /><br />
       <fieldset id="pol">
       Пол:
-      
+
       <input
         type="radio"
         id="m"
@@ -131,7 +131,8 @@
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.pol
         "
-        [ngModelOptions]="{ standalone: true }" 
+        value="M"
+        [ngModelOptions]="{ standalone: true }"
         />
       М,
       <input
@@ -141,6 +142,7 @@
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.pol
         "
+        value="Z"
         [ngModelOptions]="{ standalone: true }" />
       Ж </fieldset> | Датум рођења
       <input
@@ -257,7 +259,7 @@
       class="radio"
       name="radni_status"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
-      value="запослен"
+      value="zaposlen"
       [ngModelOptions]="{ standalone: true }"
     />
     запослен,
@@ -267,7 +269,7 @@
       class="radio"
       name="radni_status"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
-      value="незапослен"
+      value="nezaposlen"
       [ngModelOptions]="{ standalone: true }"
     />
     незапослен,
@@ -277,7 +279,7 @@
       class="radio"
       name="radni_status"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
-      value="пензионер"
+      value="penzioner"
       [ngModelOptions]="{ standalone: true }"
     />
     пензионер,
@@ -287,7 +289,7 @@
       class="radio"
       name="radni_status"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
-      value="ученик"
+      value="ucenik"
       [ngModelOptions]="{ standalone: true }"
     />
     ученик,
@@ -297,7 +299,7 @@
       class="radio"
       name="radni_status"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
-      value="студент"
+      value="student"
       [ngModelOptions]="{ standalone: true }"
     />
     студент,
@@ -307,7 +309,7 @@
       class="radio"
       name="radni_status"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.radni_status"
-      value="дете"
+      value="dete"
       [ngModelOptions]="{ standalone: true }"
     />
     дете<br /><br />
@@ -320,7 +322,7 @@
       class="radio"
       name="zanimanje"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
-      value="здравствена заштита"
+      value="zdravstvena zastita"
       [ngModelOptions]="{ standalone: true }"
     />
     здравствена заштита,
@@ -330,7 +332,7 @@
       class="radio"
       name="zanimanje"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
-      value="социјална заштита"
+      value="socijalna zastita"
       [ngModelOptions]="{ standalone: true }"
     />
     социјална заштита,
@@ -340,7 +342,7 @@
       class="radio"
       name="zanimanje"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
-      value="просвета"
+      value="prosveta"
     />
     просвета,
     <input
@@ -349,7 +351,7 @@
       class="radio"
       name="zanimanje"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
-      value="МУП"
+      value="mup"
     />
     МУП,
     <input
@@ -358,7 +360,7 @@
       class="radio"
       name="zanimanje"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
-      value="Војска РС"
+      value="vojska rs"
     />
     Војска РС,
     <input
@@ -367,7 +369,7 @@
       class="radio"
       name="zanimanje"
       [(ngModel)]="obrazacSaglasnosti.evidencija_pacijent.pacijent.zanimanje"
-      value="друго"
+      value="drugo"
     />
     друго</fieldset><br />
     <fieldset id="socijalna_zastita">

@@ -1,7 +1,15 @@
 import {ObrazacInteresovanja} from "../model/interesovanje";
 import {ObrazacSaglasnosti} from "../model/obrazac-saglasnosti";
+import {ZahtevZaSertifikat} from "../model/zahtev-za-sertifikat";
+
+function getTrenutniDatum() {
+  const today = new Date()
+  return `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
+}
+
 
 export const interesovanjeToXml = (oi: ObrazacInteresovanja) => {
+  const datum = getTrenutniDatum()
   return `<?xml version="1.0" encoding="UTF-8"?>
 <is:obrazac_interesovanja xmlns:ns1="http://www.rokzasok.rs/tipovi"
                           xmlns:r="http://www.w3.org/ns/rdfa#"
@@ -22,15 +30,14 @@ export const interesovanjeToXml = (oi: ObrazacInteresovanja) => {
         <is:lokacija_opstina>${oi.opsti_podaci.lokacija_opstina}</is:lokacija_opstina>
         <is:tip_vakcine>${oi.opsti_podaci.tip_vakcine}</is:tip_vakcine>
         <is:davalac_krvi>${oi.opsti_podaci.davalac_krvi}</is:davalac_krvi>
-        <is:datum_podnosenja>${oi.opsti_podaci.datum_podnosenja}</is:datum_podnosenja>
+        <is:datum_podnosenja>${datum}</is:datum_podnosenja>
         <is:idPodnosioca>${oi.opsti_podaci.idPodnosioca}</is:idPodnosioca>
     </is:opsti_podaci>
     <is:dokument_id>1</is:dokument_id>
 </is:obrazac_interesovanja>`
 }
 export const obrazacSaglasnostiToXml = (os: ObrazacSaglasnosti) => {
-  const today = new Date()
-  const datum = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
+  const datum = getTrenutniDatum()
 
   let xmlUvod = `<?xml version="1.0" encoding="UTF-8"?>`;
   return `${xmlUvod}
@@ -88,4 +95,39 @@ export const obrazacSaglasnostiToXml = (os: ObrazacSaglasnosti) => {
         <os:datum_kreiranja>${datum}</os:datum_kreiranja>
     </os:dokument_info>
 </os:obrazac_saglasnosti>` // todo: izjava ne treba uvek da bude true (linija 84) i idPodnosioca ne treba uvek 2
+}
+export const zahtevZaSertifikatToXml = (zh: ZahtevZaSertifikat) => {
+  const xmlUvod = `<?xml version="1.0" encoding="UTF-8"?>`;
+
+  const datum = getTrenutniDatum();
+
+  return `${xmlUvod}
+<zh:zahtev xmlns:zh="www.rokzasok.rs/gradjanin/zahtev-za-sertifikat"
+           xmlns:tp="http://www.rokzasok.rs/tipovi"
+           xmlns:r="http://www.w3.org/ns/rdfa#"
+           xmlns:pred="http://www.rokzasok.rs/rdf/database/predicate/"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="www.rokzasok.rs/gradjanin/zahtev-za-sertifikat schema/zahtev_za_sertifikat.xsd">
+    <zh:razlog_podnosenja>${zh.razlog_podnosenja}</zh:razlog_podnosenja>
+    <zh:mesto>${zh.mesto}</zh:mesto>
+    <zh:datum>${datum}</zh:datum>
+    <zh:pacijent>
+        <zh:jmbg>${zh.pacijent.jmbg}</zh:jmbg>
+        <zh:ime>${zh.pacijent.ime}</zh:ime>
+        <zh:prezime>${zh.pacijent.prezime}</zh:prezime>
+        <zh:pol>${zh.pacijent.pol}</zh:pol>
+        <zh:datum_rodjenja>${zh.pacijent.datum_rodjenja}</zh:datum_rodjenja>
+        <zh:broj_pasosa>${zh.pacijent.broj_pasosa}</zh:broj_pasosa>
+        <zh:id>1</zh:id>
+    </zh:pacijent>
+    <zh:dokument_id>1</zh:dokument_id>
+</zh:zahtev>
+` // todo: nezakucan ID sa linije 116
+}
+export const korisnikDtoToXml = (username: string, password: string) => {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+  <korisnik>
+<korisnickoIme>${username}</korisnickoIme>
+<lozinka>${password}</lozinka>
+</korisnik>`
 }
