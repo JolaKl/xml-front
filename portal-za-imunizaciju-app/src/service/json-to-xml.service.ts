@@ -1,3 +1,5 @@
+import { PotvrdaVakcinacije } from "src/model/potvrda-o-vakcinaciji";
+import { ZahtevZaSertifikat } from "src/model/zahtev-za-sertifikat";
 import {ObrazacInteresovanja} from "../model/interesovanje";
 import {ObrazacSaglasnosti} from "../model/obrazac-saglasnosti";
 
@@ -89,3 +91,75 @@ export const obrazacSaglasnostiToXml = (os: ObrazacSaglasnosti) => {
     </os:dokument_info>
 </os:obrazac_saglasnosti>` // todo: izjava ne treba uvek da bude true (linija 84) i idPodnosioca ne treba uvek 2
 }
+
+
+export const sertifikatToXml = (zs: ZahtevZaSertifikat) => {
+    return `<?xml version="1.0" encoding="UTF-8"?>
+    <zh:zahtev xmlns:zh="www.rokzasok.rs/gradjanin/zahtev-za-sertifikat"
+               xmlns:tp="http://www.rokzasok.rs/tipovi"
+               xmlns:r="http://www.w3.org/ns/rdfa#"
+               xmlns:pred="http://www.rokzasok.rs/rdf/database/predicate/"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="www.rokzasok.rs/gradjanin/zahtev-za-sertifikat schema/zahtev_za_sertifikat.xsd">
+        <zh:razlog_podnosenja>${zs.razlog_podnosenja}</zh:razlog_podnosenja>
+        <zh:mesto>${zs.mesto}</zh:mesto>
+        <zh:datum>${zs.datum}</zh:datum>
+        <zh:pacijent>
+            <zh:jmbg>${zs.pacijent.jmbg}</zh:jmbg>
+            <zh:ime>${zs.pacijent.ime}</zh:ime>
+            <zh:prezime>${zs.pacijent.prezime}</zh:prezime>
+            <zh:pol>${zs.pacijent.pol}</zh:pol>
+            <zh:datum_rodjenja>${zs.pacijent.datum_rodjenja}</zh:datum_rodjenja>
+            <zh:broj_pasosa>${zs.pacijent.broj_pasosa}</zh:broj_pasosa>
+            <zh:id>1</zh:id>
+        </zh:pacijent>
+        <zh:dokument_id>1</zh:dokument_id>
+    </zh:zahtev>`
+  }
+
+  export const potvrdaToXml = (pv: PotvrdaVakcinacije) => {
+    return `<?xml version="1.0" encoding="UTF-8"?>
+    <po:potvrda-vakcinacije xmlns:tp="http://www.rokzasok.rs/tipovi"
+                            xmlns:r="http://www.w3.org/ns/rdfa#"
+                            xmlns:pred="http://www.rokzasok.rs/rdf/database/predicate/"
+                            xmlns:po="http://www.rokzasok.rs/zdravstveni-radnik/potvrda-vakcinacije"
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                            xsi:schemaLocation="http://www.rokzasok.rs/zdravstveni-radnik/potvrda-vakcinacije schema/potvrda_vakcinacije.xsd">
+        <po:osoba>
+            <po:jmbg>${pv.osoba.jmbg}</po:jmbg>
+            <po:ime>${pv.osoba.ime}</po:ime>
+            <po:prezime>${pv.osoba.prezime}</po:prezime>
+            <po:pol>${pv.osoba.pol}</po:pol>
+            <po:datum_rodjenja>${pv.osoba.datum_rodjenja}</po:datum_rodjenja>
+            <po:id>1</po:id>
+        </po:osoba>
+        <po:doze>
+            <po:doza>
+                <po:tip>${pv.doze[0].tip}</po:tip>
+                <po:proizvodjac>${pv.doze[0].proizvodjac}</po:proizvodjac>
+                <po:datum>${pv.doze[0].datum}</po:datum>
+                <po:broj_serije>${pv.doze[0].broj_serije}</po:broj_serije>
+                <po:broj_doze>1</po:broj_doze>
+                <po:ustanova>
+                    <po:naziv>${pv.doze[0].ustanova.naziv}</po:naziv>
+                    <po:mesto>${pv.doze[0].ustanova.mesto}</po:mesto>
+                </po:ustanova>
+            </po:doza>
+            <po:doza>
+              <po:tip>${pv.doze[1].tip}</po:tip>
+              <po:proizvodjac>${pv.doze[1].proizvodjac}</po:proizvodjac>
+              <po:datum>${pv.doze[1].datum}</po:datum>
+              <po:broj_serije>${pv.doze[1].broj_serije}</po:broj_serije>
+              <po:broj_doze>1</po:broj_doze>
+              <po:ustanova>
+                  <po:naziv>${pv.doze[1].ustanova.naziv}</po:naziv>
+                  <po:mesto>${pv.doze[1].ustanova.mesto}</po:mesto>
+              </po:ustanova>
+            </po:doza>
+        </po:doze>
+        <po:qr_link>potvrda.com</po:qr_link>
+        <po:datum_izdavanja>2022-02-27</po:datum_izdavanja>
+        <po:dokument_id>1</po:dokument_id>
+    </po:potvrda-vakcinacije>
+    `
+  }

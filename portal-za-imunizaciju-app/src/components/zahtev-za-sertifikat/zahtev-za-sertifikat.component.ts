@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ZahtevZaSertifikat } from 'src/model/zahtev-za-sertifikat';
-import * as JsonToXML from 'js2xmlparser';
+import { ZahtevZaSertifikatService } from 'src/service/zahtev-za-sertifikat.service';
+import { sertifikatToXml } from '../../service/json-to-xml.service';
 
 @Component({
   selector: 'app-zahtev-za-sertifikat',
@@ -11,20 +13,28 @@ export class ZahtevZaSertifikatComponent implements OnInit {
   public zahtevZaSertifikat: ZahtevZaSertifikat = new ZahtevZaSertifikat();
   public imeIprezime: string = '';
   public validForm: Boolean = true;
-  constructor() {}
+
+  constructor(private zahtevZaSertifikatService: ZahtevZaSertifikatService) {}
 
   ngOnInit(): void {
     this.setDate();
   }
 
   onPotvrdi() {
-    console.log(this.zahtevZaSertifikat);
     this.validForm = this.checkForm();
-
-    /*var naziv: string[] = this.imeIprezime.split(' ');
-    this.zahtevZaSertifikat.pacijent.ime = naziv[0];
-    this.zahtevZaSertifikat.pacijent.prezime = naziv[1];
-    console.log(JsonToXML.parse("zahtev", this.zahtevZaSertifikat))*/
+    if (this.validForm){
+      var obrazac = sertifikatToXml(this.zahtevZaSertifikat);
+      this.zahtevZaSertifikatService.addZahtevZaSertifikat(obrazac).subscribe({
+        next: (response: any) => {
+          console.log('Uspesno dodato:', response)
+        },
+        error: (error: HttpErrorResponse) => {
+          console.log(error.message)
+          alert("greska kod dodavanja");
+        },
+      });
+    } 
+    else console.log('aaa');
   }
 
   checkJMBG(): Boolean {
@@ -38,7 +48,6 @@ export class ZahtevZaSertifikatComponent implements OnInit {
   }
 
   checkForm(): Boolean {
-    //dodati i provjeru za jmbg i pasos
     if (
       this.imeIprezime.split(' ').length < 2 ||
       this.zahtevZaSertifikat.pacijent.datum_rodjenja == null ||
@@ -49,15 +58,18 @@ export class ZahtevZaSertifikatComponent implements OnInit {
       this.zahtevZaSertifikat.mesto == ''
     )
       return false;
+    var imeIPrezime = this.imeIprezime.split(' ');
+    this.zahtevZaSertifikat.pacijent.ime = imeIPrezime[0];
+    this.zahtevZaSertifikat.pacijent.prezime = imeIPrezime[1];
 
     return true;
   }
 
-  setDate(): void{
+  setDate(): void {
     var dateObj = new Date();
     var month = dateObj.getUTCMonth() + 1;
     var day = dateObj.getUTCDate();
     var year = dateObj.getUTCFullYear();
-    this.zahtevZaSertifikat.datum = day + '.' + month + '.' + year + '.';
+    this.zahtevZaSertifikat.datum = year + '-' + month + '-' + day;
   }
 }
