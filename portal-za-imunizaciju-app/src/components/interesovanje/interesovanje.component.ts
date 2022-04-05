@@ -3,7 +3,7 @@ import { PatternValidator } from '@angular/forms';
 import { ObrazacInteresovanja } from 'src/model/interesovanje';
 import { InteresovanjeService } from 'src/service/interesovanje.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import {interesovanjeToXml} from "../../service/json-to-xml.service";
+import { interesovanjeToXml } from '../../service/json-to-xml.service';
 
 @Component({
   selector: 'app-interesovanje',
@@ -26,7 +26,7 @@ export class InteresovanjeComponent implements OnInit {
   };
   public validForm: Boolean = true;
 
-  constructor(private interesovanjeService:InteresovanjeService) {}
+  constructor(private interesovanjeService: InteresovanjeService) {}
 
   ngOnInit(): void {}
 
@@ -38,11 +38,11 @@ export class InteresovanjeComponent implements OnInit {
 
     this.interesovanjeService.addObrazac(obrazac).subscribe({
       next: (response: any) => {
-        console.log('Uspesno dodato:', response)
+        console.log('Uspesno dodato:', response);
       },
       error: (error: HttpErrorResponse) => {
-        console.log(error.message)
-        alert("greska kod dodavanja");
+        console.log(error.message);
+        alert('greska kod dodavanja');
       },
     });
   }
