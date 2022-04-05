@@ -8,14 +8,15 @@ import { environment } from 'src/environments/environment';
 })
 export class PotvrdaOVakcinacijiService {
 
-  private apiServerUrl = environment.apiBaseUrl;
+  private apiServerUrl = `${environment.apiBaseUrl}api/potvrda-vakcinacije`;
 
   constructor(private http: HttpClient) {}
 
   public addPotvrdaOVakcinaciji(obrazac: any): Observable<string> {
     return this.http.post(
-      `${this.apiServerUrl}/`, //DODATI PUTANJU
+      this.apiServerUrl,
       obrazac,
       { responseType: 'text' }
     );
   }
+}

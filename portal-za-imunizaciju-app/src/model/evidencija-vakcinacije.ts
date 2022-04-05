@@ -37,12 +37,14 @@ export class EvidencijaVakcinacije {
     datum: string;
     broj_serije: string;
     broj_doze: string;
+    nezeljene_reakcije: string;
     constructor(obj?: any) {
       this.tip = (obj && obj.tip) || null;
       this.proizvodjac = (obj && obj.proizvodjac) || null;
       this.datum = (obj && obj.datum) || null;
       this.broj_serije = (obj && obj.broj_serije) || null;
       this.broj_doze = (obj && obj.broj_doze) || null;
+      this.nezeljene_reakcije = (obj && obj.nezeljene_reakcije) || null;
     }
   }
 

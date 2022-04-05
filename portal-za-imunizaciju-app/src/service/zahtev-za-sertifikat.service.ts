@@ -7,13 +7,13 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ZahtevZaSertifikatService {
-  private apiServerUrl = environment.apiBaseUrl;
+  private apiServerUrl = `${environment.apiBaseUrl}api/zahtev-za-sertifikat`;
 
   constructor(private http: HttpClient) {}
 
   public addZahtevZaSertifikat(obrazac: any): Observable<string> {
     return this.http.post(
-      `${this.apiServerUrl}/`, //DODATI PUTANJU
+      this.apiServerUrl,
       obrazac,
       { responseType: 'text' }
     );
