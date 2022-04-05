@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {InteresovanjeComponent} from 'src/components/interesovanje/interesovanje.component';
-import {ObrazacInteresovanja} from 'src/model/interesovanje';
+import {HttpClient} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
 
 @Injectable({

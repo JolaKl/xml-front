@@ -33,7 +33,7 @@ export class ZahtevZaSertifikatComponent implements OnInit {
           alert("greska kod dodavanja");
         },
       });
-    } 
+    }
     else console.log('aaa');
   }
 
