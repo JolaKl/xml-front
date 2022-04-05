@@ -19,4 +19,18 @@ export class PotvrdaOVakcinacijiService {
       { responseType: 'text' }
     );
   }
+
+  public getPotvrdaOVakcinacijiHtml(id: string, tipDokumenta: string ='potvrda-vakcinacije'): Observable<string> {
+    return this.http.get(
+      environment.apiBaseUrl + 'api/' + tipDokumenta + '/html/' + id,
+      { responseType: 'text' }
+    );
+  }
+
+  public getPotvrdaOVakcinacijiPdf(id: string, tipDokumenta: string ='potvrda-vakcinacije'): Observable<Blob> {
+    return this.http.get(
+      environment.apiBaseUrl + 'api/' + tipDokumenta + '/pdf/' + id,
+      { responseType: 'blob' }
+    );
+  }
 }
