@@ -19,4 +19,12 @@ export class ObrazacSaglasnostiService {
       {responseType: "text"}
     )
   }
+
+  // treba paziti da li se dobvlja pola ili ceo obrazac
+  public getObrazacSaglasnosti(id: number): Observable<string> {
+    return this.http.get(`${this.apiServerUrl}/${id}`,
+      {responseType: "text"}
+    )
+  }
+
 }

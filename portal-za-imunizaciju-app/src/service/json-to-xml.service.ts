@@ -219,3 +219,11 @@ export const sertifikatToXml = (zs: ZahtevZaSertifikat) => {
     </po:potvrda-vakcinacije>
     `
   }
+
+  export const korisnikDtoToXml = (username: string, password: string) => {
+    return `<?xml version="1.0" encoding="UTF-8"?>
+    <korisnik>
+        <korisnickoIme>${username}</korisnickoIme>
+        <lozinka>${password}</lozinka>
+    </korisnik>`
+  }
