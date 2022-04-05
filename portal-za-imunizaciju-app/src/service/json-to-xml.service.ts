@@ -5,6 +5,8 @@ import {ObrazacInteresovanja} from "../model/interesovanje";
 import {ObrazacSaglasnosti} from "../model/obrazac-saglasnosti";
 
 export const interesovanjeToXml = (oi: ObrazacInteresovanja) => {
+    const today = new Date()
+  const datum = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
   return `<?xml version="1.0" encoding="UTF-8"?>
 <is:obrazac_interesovanja xmlns:ns1="http://www.rokzasok.rs/tipovi"
                           xmlns:r="http://www.w3.org/ns/rdfa#"
@@ -25,7 +27,7 @@ export const interesovanjeToXml = (oi: ObrazacInteresovanja) => {
         <is:lokacija_opstina>${oi.opsti_podaci.lokacija_opstina}</is:lokacija_opstina>
         <is:tip_vakcine>${oi.opsti_podaci.tip_vakcine}</is:tip_vakcine>
         <is:davalac_krvi>${oi.opsti_podaci.davalac_krvi}</is:davalac_krvi>
-        <is:datum_podnosenja>${oi.opsti_podaci.datum_podnosenja}</is:datum_podnosenja>
+        <is:datum_podnosenja>${datum}</is:datum_podnosenja>
         <is:idPodnosioca>${localStorage.getItem('idKorisnika')}</is:idPodnosioca>
     </is:opsti_podaci>
     <is:dokument_id>1</is:dokument_id>
@@ -149,6 +151,8 @@ export const obrazacSaglasnostiSaEVToXml = (dobijenObrazac: string, ev: Evidenci
 
 
 export const sertifikatToXml = (zs: ZahtevZaSertifikat) => {
+    const today = new Date()
+    const datum = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
     return `<?xml version="1.0" encoding="UTF-8"?>
     <zh:zahtev xmlns:zh="www.rokzasok.rs/gradjanin/zahtev-za-sertifikat"
                xmlns:tp="http://www.rokzasok.rs/tipovi"
@@ -158,7 +162,7 @@ export const sertifikatToXml = (zs: ZahtevZaSertifikat) => {
                xsi:schemaLocation="www.rokzasok.rs/gradjanin/zahtev-za-sertifikat schema/zahtev_za_sertifikat.xsd">
         <zh:razlog_podnosenja>${zs.razlog_podnosenja}</zh:razlog_podnosenja>
         <zh:mesto>${zs.mesto}</zh:mesto>
-        <zh:datum>${zs.datum}</zh:datum>
+        <zh:datum>${datum}</zh:datum>
         <zh:pacijent>
             <zh:jmbg>${zs.pacijent.jmbg}</zh:jmbg>
             <zh:ime>${zs.pacijent.ime}</zh:ime>
@@ -173,6 +177,8 @@ export const sertifikatToXml = (zs: ZahtevZaSertifikat) => {
 }
 
 export const potvrdaToXml = (pv: PotvrdaVakcinacije) => {
+    const today = new Date()
+  const datum = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
 return `<?xml version="1.0" encoding="UTF-8"?>
 <po:potvrda-vakcinacije xmlns:tp="http://www.rokzasok.rs/tipovi"
                         xmlns:r="http://www.w3.org/ns/rdfa#"
@@ -213,7 +219,7 @@ return `<?xml version="1.0" encoding="UTF-8"?>
         </po:doza>
     </po:doze>
     <po:qr_link>potvrda.com</po:qr_link>
-    <po:datum_izdavanja>2022-02-27</po:datum_izdavanja>
+    <po:datum_izdavanja>${datum}</po:datum_izdavanja>
     <po:dokument_id>1</po:dokument_id>
 </po:potvrda-vakcinacije>
 `
