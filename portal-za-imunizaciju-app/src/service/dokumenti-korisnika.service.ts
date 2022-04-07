@@ -13,7 +13,8 @@ export class DokumentiKorisnikaService {
 
   public getListaDokumenata(id: string): Observable<string> {
     return this.http.get(
-      this.apiServerUrl + id,
+      //this.apiServerUrl + id,
+      "http://localhost:9090/api/dokumenti/" + id,
       { responseType: 'text' }
     );
   }
