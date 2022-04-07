@@ -30,4 +30,8 @@ export class LoginService {
     localStorage.removeItem('ulogaKorisnika')
   }
 
+  public registration(korisnikData: any): void {
+    // todo implement!
+  }
+
 }

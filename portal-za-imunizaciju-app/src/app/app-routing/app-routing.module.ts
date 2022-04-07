@@ -9,8 +9,9 @@ import { ZahtevZaSertifikatComponent } from 'src/components/zahtev-za-sertifikat
 import { PotvrdaOVakcinacijiComponent } from 'src/components/potvrda-o-vakcinaciji/potvrda-o-vakcinaciji.component';
 import { RegistracijaComponent } from 'src/components/registracija/registracija.component';
 import { LoginComponent } from 'src/components/login/login.component';
-import { PrikazPotvrdeComponent } from 'src/components/prikaz-potvrde/prikaz-potvrde.component';
-import { PotvrdaVakcinacijePregledComponent } from 'src/components/potvrda-vakcinacije-pregled/potvrda-vakcinacije-pregled.component';
+import { PregledComponent } from 'src/components/pregled/pregled.component';
+import { PrikazHtmlComponent } from 'src/components/prikaz-html/prikaz-html.component';
+import { MojiDokumentiComponent } from 'src/components/moji-dokumenti/moji-dokumenti.component';
 
 
 export const routes :Routes = [
@@ -20,8 +21,9 @@ export const routes :Routes = [
   {path: 'potvrda-vakcinacije', component: PotvrdaOVakcinacijiComponent},
   {path: 'registracija', component: RegistracijaComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'prikaz/:tipDokumenta/:id', component: PrikazPotvrdeComponent},
-  {path: 'pregled/:tipDokumenta/:id', component: PotvrdaVakcinacijePregledComponent},
+  {path: 'prikaz/:tipDokumenta/:id', component: PrikazHtmlComponent},
+  {path: 'pregled/:tipDokumenta/:id', component: PregledComponent},
+  {path: 'moji-dokumenti', component: MojiDokumentiComponent},
 ];
 
 @NgModule({

@@ -6,18 +6,15 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class PotvrdaOVakcinacijiService {
-
-  private apiServerUrl = `${environment.apiBaseUrl}api/potvrda-vakcinacije`;
+export class DokumentiKorisnikaService {
+  private apiServerUrl = `${environment.apiBaseUrl}b2b/dokumenti-po-korisniku/`;
 
   constructor(private http: HttpClient) {}
 
-  public addPotvrdaOVakcinaciji(obrazac: any): Observable<string> {
-    return this.http.post(
-      this.apiServerUrl,
-      obrazac,
+  public getListaDokumenata(id: string): Observable<string> {
+    return this.http.get(
+      this.apiServerUrl + id,
       { responseType: 'text' }
     );
   }
-  
 }

@@ -2,19 +2,20 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PotvrdaOVakcinacijiService } from 'src/service/potvrda-o-vakcinaciji.service';
+import { XhtmlPdfService } from 'src/service/xhtml-pdf.service';
 
 declare var require: any;
 
 @Component({
-  selector: 'app-potvrda-vakcinacije-pregled',
-  templateUrl: './potvrda-vakcinacije-pregled.component.html',
-  styleUrls: ['./potvrda-vakcinacije-pregled.component.css']
+  selector: 'app-pregled',
+  templateUrl: './pregled.component.html',
+  styleUrls: ['./pregled.component.css']
 })
-export class PotvrdaVakcinacijePregledComponent implements OnInit {
+export class PregledComponent implements OnInit {
 
   public id: string = '';
-  public tipDokumenta: string = 'potvrda-vakc';
-  constructor(private route: ActivatedRoute, private potvrdaService: PotvrdaOVakcinacijiService) { }
+  public tipDokumenta: string = '';
+  constructor(private route: ActivatedRoute, private xhtmlPdfService: XhtmlPdfService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') + '';
@@ -23,7 +24,7 @@ export class PotvrdaVakcinacijePregledComponent implements OnInit {
   }
 
   downloadXhtml(): void {
-    this.potvrdaService.getPotvrdaOVakcinacijiHtml(this.id, this.tipDokumenta).subscribe({
+    this.xhtmlPdfService.getDokumentXHTML(this.id, this.tipDokumenta).subscribe({
       next: (response: any) => {
         var FileSaver = require('file-saver');
         var blob = new Blob([response], {type: "text/plain;charset=utf-8"});
@@ -37,7 +38,7 @@ export class PotvrdaVakcinacijePregledComponent implements OnInit {
   }
 
   downloadPdf(): void {
-    this.potvrdaService.getPotvrdaOVakcinacijiPdf(this.id, this.tipDokumenta).subscribe({
+    this.xhtmlPdfService.getDokumentPDF(this.id, this.tipDokumenta).subscribe({
       next: (response: any) => {
         var FileSaver = require('file-saver');
         var blob = new Blob([response], {type: "text/plain;charset=utf-8"});
@@ -45,9 +46,10 @@ export class PotvrdaVakcinacijePregledComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
-        alert('greska kod dodavanja');
+        alert('greska kod dobavljanja');
       },
     });
   }
 
 }
+

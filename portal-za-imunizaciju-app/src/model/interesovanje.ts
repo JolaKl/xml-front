@@ -1,5 +1,3 @@
-import { Drzavljanstvo } from "./obrazac-saglasnosti";
-
 export class ObrazacInteresovanja {
     podaci_o_osobi: PodaciOOsobi;
     opsti_podaci: OpstiPodaci;
