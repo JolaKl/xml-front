@@ -30,8 +30,12 @@ export class LoginService {
     localStorage.removeItem('ulogaKorisnika')
   }
 
-  public registration(korisnikData: any): void {
-    // todo implement!
+  public register(korisnikData: any): Observable<string> {
+    return this.http.patch(
+      `${this.apiServerUrl}/dodaj-gradjanina`,
+      korisnikData,
+      {responseType: 'text', headers: new HttpHeaders({'Content-Type': 'application/xml'})}
+    )
   }
 
 }

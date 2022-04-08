@@ -7,14 +7,13 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class DokumentiKorisnikaService {
-  private apiServerUrl = `${environment.apiBaseUrl}b2b/dokumenti-po-korisniku/`;
+  private apiServerUrl = `${environment.apiBaseUrl}api/dokumenti/`;
 
   constructor(private http: HttpClient) {}
 
   public getListaDokumenata(id: string): Observable<string> {
     return this.http.get(
-      //this.apiServerUrl + id,
-      "http://localhost:9090/api/dokumenti/" + id,
+      this.apiServerUrl + "dokumenti-po-korisniku/" + id,
       { responseType: 'text' }
     );
   }

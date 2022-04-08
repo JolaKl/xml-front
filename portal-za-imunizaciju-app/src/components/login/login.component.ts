@@ -3,6 +3,8 @@ import {LoginService} from "../../service/login.service";
 import {korisnikDtoToXml} from "../../service/json-to-xml.service";
 import {xml2js} from "xml-js";
 import {HttpErrorResponse} from "@angular/common/http";
+import { routes } from 'src/app/app-routing/app-routing.module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -30,14 +32,17 @@ export class LoginComponent implements OnInit {
     const korisnikXML = korisnikDtoToXml(this.form.username, this.form.password)
     this.loginService.login(korisnikXML).subscribe({
       next: (response: string) => {
+        this.isLoginFailed = false;
         const korisnikJS = xml2js(response)
         localStorage.setItem('korisnickoIme', korisnikJS.elements[0].attributes.korisnickoIme)
         localStorage.setItem('idKorisnika', korisnikJS.elements[0].attributes.id)
         localStorage.setItem('ulogaKorisnika', korisnikJS.elements[0].elements[1].elements[0].elements[0].text)
+        window.location.href = '/moji-dokumenti';
       },
       error: (error: HttpErrorResponse) => {
+        this.isLoginFailed = true;
         console.log(error.message)
-        alert("greska kod logina");
+        alert("Neuspesna prijava.");
       }
     })
   }

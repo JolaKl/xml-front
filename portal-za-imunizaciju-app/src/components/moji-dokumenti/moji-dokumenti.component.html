@@ -23,7 +23,7 @@
                     <tr *ngFor="let dokumentic of dokumenti.listaDokumenata">
                       <td class="text-nowrap align-middle">{{dokumentic.tipDokumenta}}</td>
                       <td class="text-nowrap align-middle"><a href="{{dokumentic.documentURI}}">{{dokumentic.documentURI}}</a></td>
-                      <td class="text-nowrap align-middle"><span>{{dokumentic.datumKreiranja}}</span></td>
+                      <td class="text-nowrap align-middle"><span>{{transformDate(dokumentic.datumKreiranja)}}</span></td>
                     </tr>
                   </tbody>
                 </table>

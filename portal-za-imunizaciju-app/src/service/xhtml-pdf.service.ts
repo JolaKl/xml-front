@@ -8,20 +8,20 @@ import { environment } from 'src/environments/environment';
 })
 export class XhtmlPdfService {
   
-  private apiServerUrl = `${environment.apiBaseUrl}api/`;
+  private apiServerUrl = `${environment.apiBaseUrl}api/dokumenti`;
 
   constructor(private http: HttpClient) {}
 
   public getDokumentXHTML(id: string, tipDokumenta: string): Observable<string> {
     return this.http.get(
-      this.apiServerUrl + tipDokumenta + '/html/' + id,
+      this.apiServerUrl + '/html/' + tipDokumenta + "/" + id,
       { responseType: 'text' }
     );
   }
 
   public getDokumentPDF(id: string, tipDokumenta: string): Observable<Blob> {
     return this.http.get(
-      this.apiServerUrl + tipDokumenta + '/pdf/' + id,
+      this.apiServerUrl + '/pdf/' + tipDokumenta + "/" + id,
       { responseType: 'blob' }
     );
   }

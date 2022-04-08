@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Dokument, DokumentiKorisnika } from 'src/model/moji-dokumenti';
 import { DokumentiKorisnikaService } from 'src/service/dokumenti-korisnika.service';
 import { xml2js } from 'xml-js';
+import { Moment } from 'moment';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-moji-dokumenti',
@@ -17,8 +19,8 @@ export class MojiDokumentiComponent implements OnInit {
   constructor(private route: ActivatedRoute, private dokumentiKorisnikaService: DokumentiKorisnikaService) { }
 
   ngOnInit(): void {
-    this.id = '1';
-    //this.id = localStorage.getItem('idKorisnika');
+    //this.id = '1';
+    this.id = localStorage.getItem('idKorisnika');
     this.dokumentiKorisnikaService.getListaDokumenata(this.id).subscribe({
       next: (response: any) => {
         this.transformToJSON(response);
@@ -45,6 +47,11 @@ export class MojiDokumentiComponent implements OnInit {
       }
     }
     console.log(this.dokumenti)
+  }
+
+  transformDate(date: string): string {
+    let a = moment(date).format("DD.MM.YYYY."); // HH:mm
+    return a
   }
 
 }

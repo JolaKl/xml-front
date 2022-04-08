@@ -232,3 +232,11 @@ return `<?xml version="1.0" encoding="UTF-8"?>
     <lozinka>${password}</lozinka>
 </korisnik>`
 }
+
+// export const createKorisnikDTOToXml = (username: string, password: string) => {
+//     return `<?xml version="1.0" encoding="UTF-8"?>
+//     <CreateKorisnikDTO>
+//         <korisnickoIme>${username}</korisnickoIme>
+//         <lozinka>${password}</lozinka>
+//     </CreateKorisnikDTO>`
+//     }
