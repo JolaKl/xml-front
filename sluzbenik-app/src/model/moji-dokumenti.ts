@@ -8,6 +8,16 @@ export class DokumentiKorisnika {
     }
 }
 
+export class DokumentiIzPretrage {
+    listaDokumenata: Dokument[];
+    query: string;
+
+    constructor(obj?: any) {
+        this.listaDokumenata = (obj && obj.listaDokumenata) || null;
+        this.query = (obj && obj.query) || 0;
+    }
+}
+
 export class Dokument {
     documentURI: string;
     tipDokumenta: string;

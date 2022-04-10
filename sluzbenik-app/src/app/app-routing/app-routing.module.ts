@@ -10,6 +10,7 @@ import { PrikazHtmlComponent } from 'src/components/prikaz-html/prikaz-html.comp
 import { SpisakZahtevaComponent } from 'src/components/spisak-zahteva/spisak-zahteva.component';
 import { GenerisiIzvestajComponent } from 'src/components/generisi-izvestaj/generisi-izvestaj.component';
 import { DostupneVakcineComponent } from 'src/components/dostupne-vakcine/dostupne-vakcine.component';
+import { PretragaDokumenataComponent } from 'src/components/pretraga-dokumenata/pretraga-dokumenata.component';
 
 
 export const routes :Routes = [
@@ -20,7 +21,8 @@ export const routes :Routes = [
   {path: 'zahtevi-za-sertifikate', component: SpisakZahtevaComponent},
   {path: 'generisi-izvestaj', component: GenerisiIzvestajComponent},
   {path: 'dostupne-vackine', component: DostupneVakcineComponent},
-  {path: 'pretraga-dokumenata/:id', component: PregledComponent},
+  {path: 'pretraga-dokumenata/:id', component: PretragaDokumenataComponent},
+  {path: 'pretraga-dokumenata', component: PretragaDokumenataComponent},
 ];
 
 @NgModule({
