@@ -12,6 +12,8 @@ import { LoginComponent } from 'src/components/login/login.component';
 import { PregledComponent } from 'src/components/pregled/pregled.component';
 import { PrikazHtmlComponent } from 'src/components/prikaz-html/prikaz-html.component';
 import { MojiDokumentiComponent } from 'src/components/moji-dokumenti/moji-dokumenti.component';
+import { PregledSaglasnostiComponent } from 'src/components/pregled-saglasnosti/pregled-saglasnosti.component';
+import { DrugiDeoSaglasnostiComponent } from 'src/components/drugi-deo-saglasnosti/drugi-deo-saglasnosti.component';
 
 
 export const routes :Routes = [
@@ -24,6 +26,8 @@ export const routes :Routes = [
   {path: 'prikaz/:tipDokumenta/:id', component: PrikazHtmlComponent},
   {path: 'pregled/:tipDokumenta/:id', component: PregledComponent},
   {path: 'moji-dokumenti', component: MojiDokumentiComponent},
+  {path: 'pregled-saglasnosti', component: PregledSaglasnostiComponent},
+  {path: 'drugi-deo-saglasnosti/:id', component: DrugiDeoSaglasnostiComponent},
 ];
 
 @NgModule({

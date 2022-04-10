@@ -20,8 +20,16 @@ export class ObrazacSaglasnostiService {
     )
   }
 
+  public updateObrazacSaglasnosti(obrazac: any): Observable<string> {
+    return this.http.put(
+      this.apiServerUrl,
+      obrazac,
+      {responseType: "text"}
+    )
+  }
+
   // treba paziti da li se dobvlja pola ili ceo obrazac
-  public getObrazacSaglasnosti(id: number): Observable<string> {
+  public getObrazacSaglasnosti(id: string): Observable<string> {
     return this.http.get(`${this.apiServerUrl}/${id}`,
       {responseType: "text"}
     )

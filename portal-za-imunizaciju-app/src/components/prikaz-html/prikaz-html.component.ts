@@ -18,7 +18,7 @@ export class PrikazHtmlComponent implements OnInit {
 
   ngOnInit(): void {
     let doc = document.querySelector('html');
-    if (doc !== null) doc.innerHTML = '';
+    if (doc !== null) doc.innerHTML = '<img id="loadingSlika" src="../../assets/loading.gif" alt="Ucitavanje">';
     this.id = this.route.snapshot.paramMap.get('id') + '';
     this.tipDokumenta = this.route.snapshot.paramMap.get('tipDokumenta') + '';
     this.getHtml();

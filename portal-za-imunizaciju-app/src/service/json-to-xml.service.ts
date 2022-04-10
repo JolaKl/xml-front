@@ -142,10 +142,11 @@ export const evidencijaVakcinacijaToXml = (ev: EvidencijaVakcinacije) => {
     `
 }
 export const obrazacSaglasnostiSaEVToXml = (dobijenObrazac: string, ev: EvidencijaVakcinacije) => {
-    let parts = dobijenObrazac.split("<os:dokument_info>")
+    let parts = dobijenObrazac.split("<os:dokument_info")
+    console.log('aaaaaaa', parts)
     return parts[0] +
       evidencijaVakcinacijaToXml(ev) +
-      "<os:dokument_info>" +
+      "<os:dokument_info" +
       parts[1];
 }
 
