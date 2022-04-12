@@ -19,4 +19,18 @@ export class PretragaService {
     )
   }
 
+  public zahteviNeobradjeni(): Observable<any> {
+    return this.http.get(
+      `${environment.apiBaseUrl}api/dokumenti/zahtevi-za-sertifikat/neobradjeni`,
+      {responseType: 'text'}
+    )
+  }
+
+  public getDokumentiKorisnika(id: string): Observable<any> {
+    return this.http.get(
+      environment.apiBaseUrl + "api/dokumenti/" + id,
+      { responseType: 'text' }
+    );
+  }
+
 }

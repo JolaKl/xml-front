@@ -11,6 +11,7 @@ import { SpisakZahtevaComponent } from 'src/components/spisak-zahteva/spisak-zah
 import { GenerisiIzvestajComponent } from 'src/components/generisi-izvestaj/generisi-izvestaj.component';
 import { DostupneVakcineComponent } from 'src/components/dostupne-vakcine/dostupne-vakcine.component';
 import { PretragaDokumenataComponent } from 'src/components/pretraga-dokumenata/pretraga-dokumenata.component';
+import { DokumentiKorisnikaComponent } from 'src/components/dokumenti-korisnika/dokumenti-korisnika.component';
 
 
 export const routes :Routes = [
@@ -23,6 +24,7 @@ export const routes :Routes = [
   {path: 'dostupne-vackine', component: DostupneVakcineComponent},
   {path: 'pretraga-dokumenata/:id', component: PretragaDokumenataComponent},
   {path: 'pretraga-dokumenata', component: PretragaDokumenataComponent},
+  {path: 'dokumenti-korisnika/:id', component: DokumentiKorisnikaComponent},
 ];
 
 @NgModule({

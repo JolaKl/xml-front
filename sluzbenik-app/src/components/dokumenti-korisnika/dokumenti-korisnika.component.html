@@ -7,11 +7,11 @@
         <div class="e-panel card">
           <div class="card-body">
             <div class="card-title">
-              <h6 class="mr-2"><span>Dokumenti</span></h6>
+              <h6 class="mr-2"><span>Dokumenti korisnika [{{id}}]</span></h6>
             </div>
             <div class="e-table">
               <div class="table-responsive table-lg mt-3">
-                <table *ngIf="dokumenti" class="table table-bordered">
+                <table *ngIf="dokumenti.listaDokumenata" class="table table-bordered">
                   <thead>
                     <tr>
                       <th class="sortable">Tip Dokumenta</th>
@@ -27,9 +27,14 @@
                     </tr>
                   </tbody>
                 </table>
-                <p *ngElse>Nema dokumenata</p>
+                <p *ngElse>Nema dokumenata korisnika</p>
               </div>
             </div>
+            <!-- <div>
+                <button class="btn btn-success ml-5" (click)="prihvati()">Prihvati zahtev</button>
+                <input type="text" [(ngModel)]="razlog">
+                <button class="btn btn-danger ml-5" (click)="odbij()">Odbij zahtev</button>
+            </div> -->
           </div>
         </div>
       </div>

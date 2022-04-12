@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { DokumentiKorisnikaComponent } from 'src/components/dokumenti-korisnika/dokumenti-korisnika.component';
 import { DostupneVakcineComponent } from 'src/components/dostupne-vakcine/dostupne-vakcine.component';
 import { GenerisiIzvestajComponent } from 'src/components/generisi-izvestaj/generisi-izvestaj.component';
 import { LoginComponent } from 'src/components/login/login.component';
@@ -25,7 +26,8 @@ import { AppComponent } from './app.component';
     SpisakZahtevaComponent,
     GenerisiIzvestajComponent,
     DostupneVakcineComponent,
-    PretragaDokumenataComponent
+    PretragaDokumenataComponent,
+    DokumentiKorisnikaComponent
   ],
   imports: [
     BrowserModule,
