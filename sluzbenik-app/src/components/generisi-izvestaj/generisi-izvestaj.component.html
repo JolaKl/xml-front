@@ -1,1 +1,12 @@
-<p>generisi-izvestaj works!</p>
+<h2>Generisanje izveštaja o imunizaciji</h2>
+<div class="container form-group row mt-4">
+    <div class="form-group col row">
+        <label for="date1" class="col-form-label mx-2">Od:</label>
+        <input type="date" name="date1" id="date1" [(ngModel)]="date1" class="form-control col-10">
+    </div>
+    <div class="form-group col row">
+        <label for="date2" class="col-form-label mx-2">Do:</label>
+        <input type="date" name="date2" id="date2" [(ngModel)]="date2" class="form-control col-10">
+    </div>
+    <button (click)="genIzvestaj()" class="btn btn-primary form-group col-sm-1">Generiši</button>
+</div>
