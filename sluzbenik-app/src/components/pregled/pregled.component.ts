@@ -1,8 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Dokument, DokumentiIzPretrage, DokumentiKorisnika } from 'src/model/moji-dokumenti';
+import { PretragaService } from 'src/service/pretraga.service';
 import { XhtmlPdfService } from 'src/service/xhtml-pdf.service';
 import { ZahtevService } from 'src/service/zahtev.service';
+import { xml2js } from 'xml-js';
 
 declare var require: any;
 
@@ -21,15 +24,19 @@ export class PregledComponent implements OnInit {
 
   public mozesObraditiZahtev: boolean = false;
 
+  public referenciraniDokumenti: DokumentiKorisnika = new DokumentiKorisnika();
+
   constructor(
     private route: ActivatedRoute, 
     private xhtmlPdfService: XhtmlPdfService,
-    private zahtevService: ZahtevService) { }
+    private zahtevService: ZahtevService,
+    private pretragaService: PretragaService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') + '';
     this.tipDokumenta = this.route.snapshot.paramMap.get('tipDokumenta') + '';
     document.getElementsByTagName('iframe')[0].src = '/prikaz/'+this.tipDokumenta+'/' + this.id;
+    this.getReferencirani()
   }
 
   downloadXhtml(): void {
@@ -99,6 +106,37 @@ export class PregledComponent implements OnInit {
         alert('greska pri odbijanju');
       },
     })
+  }
+
+  getReferencirani(): void {
+    this.pretragaService.referenciraniDokumenti(this.tipDokumenta+"/"+this.id).subscribe({
+      next: (response: any) => {
+        console.log('Uspesno dobijeno:', response);
+        //this.referenciraniDokumenti = response;
+        this.transformToJSON(response);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error.message);
+        alert('greska');
+      },
+    });
+  }
+
+  transformToJSON(response: string): void {
+    const dokumentiJS = xml2js(response)
+    this.referenciraniDokumenti.listaDokumenata = [];
+    for (let docAtr of dokumentiJS.elements[0].elements) {
+      let documentDto = new Dokument();
+      if (docAtr.name == 'idKorisnika') {
+        this.referenciraniDokumenti.idKorisnika = docAtr.elements[0].text;
+      } else {
+        documentDto.documentURI = "pregled/" + docAtr.elements[0].elements[0].text.split("http://www.rokzasok.rs/rdf/database/")[1];
+        documentDto.tipDokumenta = docAtr.elements[1].elements[0].text;
+        
+        this.referenciraniDokumenti.listaDokumenata.push(documentDto);
+      }
+    }
+    console.log(this.referenciraniDokumenti)
   }
 
 }

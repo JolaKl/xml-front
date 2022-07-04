@@ -16,5 +16,11 @@
             </div>
         </div>        
     </div>
+    <div class="card" *ngIf="referenciraniDokumenti.listaDokumenata.length > 0">
+        <h3>Referencirani dokumenti</h3>
+        <div *ngFor="let rd of referenciraniDokumenti.listaDokumenata">
+        <a href="{{rd.documentURI}}">{{rd.tipDokumenta}}</a>
+        </div>
+    </div>
     <iframe class="container" style="height: 800px" src="#" frameborder="0"></iframe>
 </div>

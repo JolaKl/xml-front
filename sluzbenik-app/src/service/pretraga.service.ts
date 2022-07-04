@@ -19,6 +19,13 @@ export class PretragaService {
     )
   }
 
+  public referenciraniDokumenti(dokument: string): Observable<any> {
+    return this.http.get(
+      this.apiServerUrl + "/" + dokument, //"/zahtev-za-sertifikat/1",//
+      {responseType: 'text'}
+    )
+  }
+
   public zahteviNeobradjeni(): Observable<any> {
     return this.http.get(
       `${environment.apiBaseUrl}api/dokumenti/zahtevi-za-sertifikat/neobradjeni`,
