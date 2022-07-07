@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { DokumentiKorisnikaComponent } from 'src/components/dokumenti-korisnika/dokumenti-korisnika.component';
 import { DostupneVakcineComponent } from 'src/components/dostupne-vakcine/dostupne-vakcine.component';
 import { GenerisiIzvestajComponent } from 'src/components/generisi-izvestaj/generisi-izvestaj.component';
@@ -35,7 +36,8 @@ import { AppComponent } from './app.component';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    RichTextEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

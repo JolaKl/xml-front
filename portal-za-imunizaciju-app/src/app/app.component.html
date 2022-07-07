@@ -6,28 +6,28 @@
       </li>
       <li *ngIf="loggedIn" class="nav-item">
         <a class="nav-link" [routerLink]="['obrazac-saglasnosti']"
-          >Сагласност</a
+          >Saglasnost</a
         >
       </li>
       <li *ngIf="loggedIn" class="nav-item">
-        <a class="nav-link" [routerLink]="['sertifikat-zahtev']">Сертификат</a>
+        <a class="nav-link" [routerLink]="['sertifikat-zahtev']">Zahtev za sertifikat</a>
       </li>
       <li *ngIf="loggedIn" class="nav-item">
         <a class="nav-link" [routerLink]="['potvrda-vakcinacije']"
-          >Потврда о вакцинацији</a
+          >Potvrda o vakcinaciji</a
         >
       </li>
       <li *ngIf="loggedIn" class="nav-item">
         <a class="nav-link" [routerLink]="['moji-dokumenti']"
-          >Моји документи</a
+          >Moji dokumenti</a
         >
       </li>
     </ul>
     <form class="form-inline mt-2 mt-md-0">
       <!-- todo: Након пријаве, требало би да нестану регистрација и логин, што се деси само након рифреша -->
-      <a class="nav-link" *ngIf="!loggedIn" [routerLink]="['registracija']">Регистрација</a>
-      <a class="nav-link" *ngIf="!loggedIn" [routerLink]="['login']">Пријави се</a>
-      <a class="nav-link" *ngIf="loggedIn" [routerLink]="['login']" (click)="logout()">Одјави се</a>
+      <a class="nav-link" *ngIf="!loggedIn" [routerLink]="['registracija']">Registracija</a>
+      <a class="nav-link" *ngIf="!loggedIn" [routerLink]="['login']">Prijavi se</a>
+      <a class="nav-link" *ngIf="loggedIn" [routerLink]="['login']" (click)="logout()">Odjavi se</a>
     </form>
 
   </div>

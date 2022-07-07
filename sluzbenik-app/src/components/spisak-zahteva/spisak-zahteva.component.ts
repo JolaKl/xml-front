@@ -43,7 +43,12 @@ export class SpisakZahtevaComponent implements OnInit {
         //console.log(docAtr.elements[0].elements[0])
         documentDto.documentURI = "pregled/" + docAtr.elements[0].elements[0].text;
         documentDto.tipDokumenta = docAtr.elements[1].elements[0].text;
-        documentDto.datumKreiranja = docAtr.elements[2].elements[0].text;
+        try {
+          documentDto.datumKreiranja = docAtr.elements[2].elements[0].text;
+        } catch {
+          console.log("nema definisan datum")
+        }
+        
         this.results.listaDokumenata.push(documentDto);
       }
     }

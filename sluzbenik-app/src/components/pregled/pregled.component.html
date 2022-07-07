@@ -8,15 +8,16 @@
     <div class="mt-1 mx-2" *ngIf="tipDokumenta == 'zahtev-za-sertifikat'">
         <button class="btn btn-primary" (click)="drugiDokumenti()">Ostali dokumenti korisnika</button>
         <!-- <app-dokumenti-korisnika [idK]="idK"></app-dokumenti-korisnika> -->
-        <button class="btn btn-success mx-2 float-right" (click)="prihvati()">Prihvati zahtev</button>
-        <div class="row">
-            <div class="col">
-                <input class="form-control my-1" type="text" [(ngModel)]="razlog">
-            </div>
-            <div class="col-auto">
-                <button class="btn btn-danger" (click)="odbij()">Odbij zahtev</button>
-            </div>
-        </div>        
+        
+        <div class="container">
+            <label for="defaultRTE" class="text-secondary">Razlog odbijanja</label>
+            <ejs-richtexteditor id='defaultRTE' [(value)]='razlog'></ejs-richtexteditor>
+            <div class="row">
+                <button class="btn btn-success mx-3 my-2 col" (click)="prihvati()">Prihvati zahtev</button>
+                <button class="btn btn-danger mx-3 my-2 col" (click)="odbij()">Odbij zahtev</button>
+            </div> 
+        </div>
+            
     </div>
     <div class="card" *ngIf="referenciraniDokumenti.listaDokumenata.length > 0">
         <h3>Referencirani dokumenti</h3>

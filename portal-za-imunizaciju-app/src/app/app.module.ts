@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { DrugiDeoSaglasnostiComponent } from 'src/components/drugi-deo-saglasnosti/drugi-deo-saglasnosti.component';
 import { InteresovanjeComponent } from 'src/components/interesovanje/interesovanje.component';
 import { LoginComponent } from 'src/components/login/login.component';
@@ -39,7 +40,8 @@ import { AppComponent } from './app.component';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    RichTextEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

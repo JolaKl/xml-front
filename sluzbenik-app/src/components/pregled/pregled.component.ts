@@ -1,18 +1,20 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Dokument, DokumentiIzPretrage, DokumentiKorisnika } from 'src/model/moji-dokumenti';
+import { Dokument, DokumentiKorisnika } from 'src/model/moji-dokumenti';
 import { PretragaService } from 'src/service/pretraga.service';
 import { XhtmlPdfService } from 'src/service/xhtml-pdf.service';
 import { ZahtevService } from 'src/service/zahtev.service';
 import { xml2js } from 'xml-js';
+import { ToolbarService, LinkService, ImageService, HtmlEditorService } from '@syncfusion/ej2-angular-richtexteditor';
 
 declare var require: any;
 
 @Component({
   selector: 'app-pregled',
   templateUrl: './pregled.component.html',
-  styleUrls: ['./pregled.component.css']
+  styleUrls: ['./pregled.component.css'],
+  providers: [ToolbarService, LinkService, ImageService, HtmlEditorService]
 })
 export class PregledComponent implements OnInit {
 
@@ -123,6 +125,7 @@ export class PregledComponent implements OnInit {
   }
 
   odbij() : void {
+    //.split('<p>')[1].split('</p>')[0]
     this.zahtevService.odbij(this.id, this.razlog).subscribe({
       next: (response: any) => {
         alert("uspesno odbijen zahtev");

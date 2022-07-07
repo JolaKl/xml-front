@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { ZahtevZaSertifikat } from 'src/model/zahtev-za-sertifikat';
 import { ZahtevZaSertifikatService } from 'src/service/zahtev-za-sertifikat.service';
 import { sertifikatToXml } from '../../service/json-to-xml.service';
+import { ToolbarService, LinkService, ImageService, HtmlEditorService } from '@syncfusion/ej2-angular-richtexteditor';
 
 @Component({
   selector: 'app-zahtev-za-sertifikat',
   templateUrl: './zahtev-za-sertifikat.component.html',
   styleUrls: ['./zahtev-za-sertifikat.component.css'],
+  providers: [ToolbarService, LinkService, ImageService, HtmlEditorService]
 })
 export class ZahtevZaSertifikatComponent implements OnInit {
   public zahtevZaSertifikat: ZahtevZaSertifikat = new ZahtevZaSertifikat();
@@ -22,11 +24,13 @@ export class ZahtevZaSertifikatComponent implements OnInit {
 
   onPotvrdi() {
     this.validForm = this.checkForm();
+    this.zahtevZaSertifikat.razlog_podnosenja = "<![CDATA["+this.zahtevZaSertifikat.razlog_podnosenja+"]]>"
     if (this.validForm){
       var obrazac = sertifikatToXml(this.zahtevZaSertifikat);
       this.zahtevZaSertifikatService.addZahtevZaSertifikat(obrazac).subscribe({
         next: (response: any) => {
-          console.log('Uspesno dodato:', response)
+          console.log('Uspesno dodato:', response);
+          window.location.href = "/moji-dokumenti";
         },
         error: (error: HttpErrorResponse) => {
           console.log(error.message)
@@ -70,6 +74,6 @@ export class ZahtevZaSertifikatComponent implements OnInit {
     var month = dateObj.getUTCMonth() + 1;
     var day = dateObj.getUTCDate();
     var year = dateObj.getUTCFullYear();
-    this.zahtevZaSertifikat.datum = year + '-' + month + '-' + day;
+    this.zahtevZaSertifikat.datum = dateObj.toISOString().split('T')[0];
   }
 }

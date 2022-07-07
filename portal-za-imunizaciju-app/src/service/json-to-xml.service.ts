@@ -163,7 +163,7 @@ export const sertifikatToXml = (zs: ZahtevZaSertifikat) => {
                xsi:schemaLocation="www.rokzasok.rs/gradjanin/zahtev-za-sertifikat schema/zahtev_za_sertifikat.xsd">
         <zh:razlog_podnosenja>${zs.razlog_podnosenja}</zh:razlog_podnosenja>
         <zh:mesto>${zs.mesto}</zh:mesto>
-        <zh:datum>${datum}</zh:datum>
+        <zh:datum>${zs.datum}</zh:datum>
         <zh:pacijent>
             <zh:jmbg>${zs.pacijent.jmbg}</zh:jmbg>
             <zh:ime>${zs.pacijent.ime}</zh:ime>
