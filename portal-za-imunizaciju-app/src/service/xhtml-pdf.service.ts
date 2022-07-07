@@ -25,4 +25,18 @@ export class XhtmlPdfService {
       { responseType: 'blob' }
     );
   }
+
+  getDokumentRdf(id: string, tipDokumenta: string): Observable<string> {
+    return this.http.get(
+      this.apiServerUrl + '/metadata/rdf/' + tipDokumenta + "/" + id,
+      { responseType: 'text' }
+    );
+  }
+
+  getDokumentJson(id: string, tipDokumenta: string): Observable<string> {
+    return this.http.get(
+      this.apiServerUrl + '/metadata/json/' + tipDokumenta + "/" + id,
+      { responseType: 'text' }
+    );
+  }
 }

@@ -1,5 +1,7 @@
 <div class="container">
     <button class="btn btn-primary ml-5" (click)="downloadXhtml()">Preuzmi XHTML</button>
     <button class="btn btn-primary ml-5" (click)="downloadPdf()">Preuzmi PDF</button>
+    <button *ngIf="!tipDokumenta.includes('izvestaj')" class="btn btn-secondary" (click)="downloadMetadataRdf()">Preuzmi Metapodatke RDF</button>
+    <button *ngIf="!tipDokumenta.includes('izvestaj')" class="btn btn-secondary" (click)="downloadMetadataJson()">Preuzmi Metapodatke JSON</button>
     <iframe class="container" style="height: 800px" src="#" frameborder="0"></iframe>
 </div>

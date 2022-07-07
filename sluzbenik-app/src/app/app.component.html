@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" [routerLink]="['interesovanje']">Интересовање</a>
       </li>
       <li class="nav-item">
@@ -11,17 +11,17 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['sertifikat-zahtev']">Сертификат</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['pretraga-dokumenata']"
+      </li> -->
+      <li class="nav-item" *ngIf="loggedIn">
+        <a class="nav-link"  [routerLink]="['pretraga-dokumenata']"
           >Pretraga</a
         >
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" [routerLink]="['moji-dokumenti']"
           >Моји документи</a
         >
-      </li>
+      </li> -->
     </ul>
     <form class="form-inline mt-2 mt-md-0">
       <!-- todo: Након пријаве, требало би да нестану регистрација и логин, што се деси само након рифреша -->

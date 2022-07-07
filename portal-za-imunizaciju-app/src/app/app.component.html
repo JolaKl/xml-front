@@ -1,23 +1,23 @@
 <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li *ngIf="loggedIn" class="nav-item">
         <a class="nav-link" [routerLink]="['interesovanje']">Интересовање</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="loggedIn" class="nav-item">
         <a class="nav-link" [routerLink]="['obrazac-saglasnosti']"
           >Сагласност</a
         >
       </li>
-      <li class="nav-item">
+      <li *ngIf="loggedIn" class="nav-item">
         <a class="nav-link" [routerLink]="['sertifikat-zahtev']">Сертификат</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="loggedIn" class="nav-item">
         <a class="nav-link" [routerLink]="['potvrda-vakcinacije']"
           >Потврда о вакцинацији</a
         >
       </li>
-      <li class="nav-item">
+      <li *ngIf="loggedIn" class="nav-item">
         <a class="nav-link" [routerLink]="['moji-dokumenti']"
           >Моји документи</a
         >

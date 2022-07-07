@@ -67,6 +67,34 @@ export class PregledComponent implements OnInit {
     });
   }
 
+  downloadMetadataRdf(): void {
+    this.xhtmlPdfService.getDokumentRdf(this.id, this.tipDokumenta).subscribe({
+      next: (response: any) => {
+        var FileSaver = require('file-saver');
+        var blob = new Blob([response], {type: "text/plain;charset=utf-8"});
+        FileSaver.saveAs(blob, this.tipDokumenta + this.id + "-metadata.rdf");
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error.message);
+        alert('greska kod dobavljanja');
+      },
+    });
+  }
+
+  downloadMetadataJson(): void {
+    this.xhtmlPdfService.getDokumentJson(this.id, this.tipDokumenta).subscribe({
+      next: (response: any) => {
+        var FileSaver = require('file-saver');
+        var blob = new Blob([response], {type: "text/plain;charset=utf-8"});
+        FileSaver.saveAs(blob, this.tipDokumenta + this.id + "-metadata.json");
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error.message);
+        alert('greska kod dobavljanja');
+      },
+    });
+  }
+
   
 
   drugiDokumenti(): void {
