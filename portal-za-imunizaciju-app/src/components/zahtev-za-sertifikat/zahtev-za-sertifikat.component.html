@@ -13,43 +13,118 @@
   <br /><br />
   Подносилац захтева:
   <br /><br />
-
-  Име и презиме:
-  <input type="text" class="form-control" required />
-  <br />
-  Датум рођења:
-  <input type="text" class="form-control" required />
-  <br />
-  Пол:
-  <input type="text" class="form-control"  required />
-  <br />
-  Јединствени матични број грађанина:
-  <input type="text" class="form-control"  required />
-  <br />
-  Број пасоша:
-  <input type="text" class="form-control" required />
-  <br />
-  Разлог за подношење захтева: <br />
-  <textarea id="w3review" name="w3review" rows="4" cols="50"> </textarea>
-  <br />
-  <p id="podtekst">
-    (навести што прецизнији разлога за подношење захтева за издавање дигиталног
-    пасоша)
-  </p>
-  <br /><br />
-  <span>
-    У
+  <form
+    name="zahtevZaSertifikat"
+    (ngSubmit)="(f.form.valid)"
+    #f="ngForm"
+    novalidate
+  >
+    Име и презиме:
     <input
       type="text"
-      name="fiksni"
-      id="mesto"
+      class="form-control"
       required
-    />,
-  </span>
-  <br />
+      [(ngModel)]="imeIprezime"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    <br />
+    Датум рођења:
+    <input
+      type="date"
+      class="form-control"
+      required
+      [(ngModel)]="zahtevZaSertifikat.pacijent.datum_rodjenja"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    <br />
+    Пол:
 
-  дана14.2022. године <br><br>
-  <div class="form-group">
-    <button class="btn btn-primary btn-block" id="ok">Потврди</button>
-  </div>
+    <select name="pol" class="form-control" id="pol" [(ngModel)]="zahtevZaSertifikat.pacijent.pol"
+    [ngModelOptions]="{ standalone: true }">
+      <option value="M">Мушки</option>
+      <option value="Z">Женски</option>
+    </select>
+    <br />
+    Јединствени матични број грађанина:
+    <input
+      type="text"
+      class="form-control"
+      required
+      [(ngModel)]="zahtevZaSertifikat.pacijent.jmbg"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    <div
+      class="alert alert-danger"
+      role="alert"
+      id="passwordError"
+      *ngIf="checkJMBG() && f.submitted"
+    >
+      ЈМБГ треба да садржи 13 цифара.
+    </div>
+    <br />
+    Број пасоша:
+    <input
+      type="text"
+      class="form-control"
+      required
+      [(ngModel)]="zahtevZaSertifikat.pacijent.broj_pasosa"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    <div
+      class="alert alert-danger"
+      role="alert"
+      id="passwordError"
+      *ngIf="checkBrojPasosa() && f.submitted"
+    >
+      Погрешан број пасоша.
+    </div>
+    <br />
+    Разлог за подношење захтева: <br />
+    <textarea
+      id="w3review"
+      name="w3review"
+      rows="4"
+      cols="50"
+      [(ngModel)]="zahtevZaSertifikat.razlog_podnosenja"
+      [ngModelOptions]="{ standalone: true }"
+    >
+    </textarea>
+    <ejs-richtexteditor id='defaultRTE' [(value)]='zahtevZaSertifikat.razlog_podnosenja'></ejs-richtexteditor>
+    <br />
+    <p id="podtekst">
+      (навести што прецизнији разлога за подношење захтева за издавање
+      дигиталног пасоша)
+    </p>
+    <br /><br />
+    <span>
+      У
+      <input
+        type="text"
+        name="fiksni"
+        id="mesto"
+        required
+        [(ngModel)]="zahtevZaSertifikat.mesto"
+        [ngModelOptions]="{ standalone: true }"
+      />,
+    </span>
+    <br />
+
+    дана {{zahtevZaSertifikat.datum}} године <br /><br />
+    <div class="form-group">
+      <button class="btn btn-primary btn-block" id="ok" (click)="onPotvrdi()">
+        Потврди
+      </button>
+    </div>
+
+    <div class="form-group">
+      <div
+        class="alert alert-danger"
+        role="alert"
+        id="error"
+        *ngIf="f.submitted && !validForm"
+      >
+        Потребно је попунити све податке.
+      </div>
+    </div>
+  </form>
 </div>

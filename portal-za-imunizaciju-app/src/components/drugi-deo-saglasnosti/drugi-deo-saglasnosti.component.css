@@ -1,0 +1,50 @@
+#title {
+    text-align: center;
+  }
+  
+  #grupa {
+    padding-left: 50px;
+  }
+  
+  table,
+  th,
+  td {
+    border: 1px solid black;
+  }
+  
+  input {
+    border: none;
+    border-bottom: 1px solid;
+  }
+  
+  #drzavljanstvo {
+    display: block;
+  }
+  #drzavljanstvo-div {
+    padding-left: 125px;
+  }
+  
+  .txt-imput {
+    width: 320px;
+  }
+  
+  #pasos {
+    display: block;
+  }
+  
+  #a {
+    display: inline-block;
+  }
+  
+  #t {
+    display: inline-block;
+  }
+  
+  label {
+    font-size: 10px;
+  }
+  
+  #block-2 {
+    display: inline-flex;
+  }
+  

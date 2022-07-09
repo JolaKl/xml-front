@@ -1,25 +1,42 @@
+<div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li *ngIf="loggedIn && uloga === 'gradjanin'" class="nav-item">
+        <a class="nav-link" [routerLink]="['interesovanje']">Interesovanje</a>
+      </li>
+      <li *ngIf="loggedIn && uloga === 'gradjanin'" class="nav-item">
+        <a class="nav-link" [routerLink]="['obrazac-saglasnosti']"
+          >Saglasnost</a
+        >
+      </li>
+      <li *ngIf="loggedIn && uloga === 'gradjanin'" class="nav-item">
+        <a class="nav-link" [routerLink]="['sertifikat-zahtev']">Zahtev za sertifikat</a>
+      </li>
+      <li *ngIf="loggedIn && uloga === 'zdravstveni_radnik'" class="nav-item">
+        <a class="nav-link" [routerLink]="['pregled-saglasnosti']"
+          >Pregled saglasnosti</a
+        >
+      </li>
+      <li *ngIf="loggedIn && uloga === 'gradjanin'" class="nav-item">
+        <a class="nav-link" [routerLink]="['moji-dokumenti']"
+          >Moji dokumenti</a
+        >
+      </li>
+    </ul>
+    <form class="form-inline mt-2 mt-md-0">
+      <!-- todo: Након пријаве, требало би да нестану регистрација и логин, што се деси само након рифреша -->
+      <a class="nav-link" *ngIf="!loggedIn" [routerLink]="['registracija']">Registracija</a>
+      <a class="nav-link" *ngIf="!loggedIn" [routerLink]="['login']">Prijavi se</a>
+      <a class="nav-link" *ngIf="loggedIn" [routerLink]="['login']" (click)="logout()">Odjavi se</a>
+    </form>
 
-  <p>E pa, ako ovo vidis onda radi okej</p> 
-<div>
-    <ul>
-    <li>
-      <a class="nav-link" [routerLink]="['interesovanje']">Interesovanje</a>
-    </li>
-    <li>
-      <a class="nav-link" [routerLink]="['obrazac-saglasnosti']">Saglasnost</a>
-    </li>
-    <li>
-      <a class="nav-link" [routerLink]="['sertifikat-zahtev']">Sertifikat</a>
-    </li>
-    <li>
-      <a class="nav-link" [routerLink]="['potvrda-vakcinacije']">Potvrda o vakcinaciji</a>
-    </li>
-  </ul>
+  </div>
+</div>
 
+<div class="container content-container">
   <div class="row">
     <div class="col">
       <router-outlet></router-outlet>
     </div>
   </div>
-
-  </div> 
+</div>

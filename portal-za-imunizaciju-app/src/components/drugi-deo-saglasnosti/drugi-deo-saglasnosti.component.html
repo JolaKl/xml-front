@@ -1,0 +1,154 @@
+<h4>Obrazac saglasnosti [{{id}}]</h4>
+<h2 id="title">
+    ЕВИДЕНЦИЈА О ВАКЦИНАЦИЈИ ПРОТИВ COVID-19<br />
+    (попуњава здравствени радник)
+  </h2>
+  <br /><br />
+
+  Здравствена установа <input type="text"
+  name="ustanova"
+  id="ustanova"
+  [(ngModel)]="evidencijaVakcinacija.ustanova.naziv" /> Вакцинацијски
+  пункт <input type="text"
+  name="punkt"
+  id="punkt"
+  [(ngModel)]="evidencijaVakcinacija.ustanova.punkt" /> <br /><br />
+  Име лекара:
+  <input type="text"
+    name="ime_lekara"
+    id="ime_lekara"
+    [(ngModel)]="evidencijaVakcinacija.lekar.ime" />
+    Презиме лекара:
+    <input type="text"
+    name="prezime_lekara"
+    id="prezime_lekara"
+    [(ngModel)]="evidencijaVakcinacija.lekar.prezime" />
+    Факсимил лекара:
+    <input type="text" 
+    name="fax"
+    id="fax"
+    [(ngModel)]="evidencijaVakcinacija.lekar.fax" />
+    Бр. телефона лекара:
+    <input type="text"
+    name="telefon_lekara"
+    id="telefon_lekara"
+    [(ngModel)]="evidencijaVakcinacija.lekar.telefon" /> <br /><br />
+  Пре давања вакцине прегледати особу и упознати је са користима и о могућим
+  нежељеним реакцијама после вакцинације. Обавезно уписати сваку дату вакцину и
+  све тражене податке у овај образац и податке унети у лични картон о извршеним
+  имунизацијама и здравствени картон. <br /><br />
+
+  <table style="width: 500px;">
+    <thead>
+      <th>Број дозе</th>
+      <th>Назив вакцине</th>
+      <th>Датум давања вакцине</th>
+      <th>Начин давања вакцине</th>
+      <th>Екстремитет</th>
+      <th>Серија вакцине (лот)</th>
+      <th>Произвођач</th>
+      <th>Нежељена реакција</th>
+      <th>Потпис лекара</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td><!--class="imput-tabela"-->
+          <input 
+          type="number" 
+          min="1"
+          style="width: 50px;"
+          name="broj_doze"
+          id="broj_doze"
+          [(ngModel)]="evidencijaVakcinacija.tabela.doza[0].broj_doze" />
+        </td>
+        <td>
+          <select id="tip" name="tip" class="imput-tabela" [(ngModel)]="evidencijaVakcinacija.tabela.doza[0].tip">
+            <option value="Pfizer-BioNtech">Pfizer-BioNtech</option>
+            <option value="Sputnik V (Gamaleya istraživački centar)">Sputnik V (Gamaleya istraživački centar)</option>
+            <option value="Sinopharm">Sinopharm</option>
+            <option value="AstraZeneca">AstraZeneca</option>
+            <option value="Moderna">Moderna</option>
+          </select>
+          <!-- <xs:enumeration value="Pfizer-BioNtech"/>
+              <xs:enumeration value="Sputnik V (Gamaleya istraživački centar)"/>
+              <xs:enumeration value="Sinopharm"/>
+              <xs:enumeration value="AstraZeneca"/>
+              <xs:enumeration value="Moderna"/> -->
+        </td>
+        <td>
+          <input type="date" 
+          class="imput-tabela"
+          name="datum"
+          id="datum"
+          [(ngModel)]="evidencijaVakcinacija.tabela.doza[0].datum" />
+        </td>
+        <td>ИМ</td>
+        <td>
+          <input type="radio" id="lr" name="extremitet" class="radio" />ЛР
+          <input type="radio" id="dr" name="extremitet" class="radio" />ДР
+        </td>
+        <td>
+          <input type="text" 
+          class="imput-tabela"
+          name="broj_serije"
+          id="broj_serije"
+          [(ngModel)]="evidencijaVakcinacija.tabela.doza[0].broj_serije" />
+        </td>
+        <td>
+          <!-- <input type="text" 
+          class="imput-tabela"
+          name="broj_serije"
+          id="broj_serije"
+          [(ngModel)]="evidencijaVakcinacija.tabela.doza[0].proizvodjac" /> -->
+          <select id="tip" name="tip" class="imput-tabela" [(ngModel)]="evidencijaVakcinacija.tabela.doza[0].proizvodjac">
+            <option value="BioNTech Manufacturing GMBH">BioNTech Manufacturing GMBH</option>
+            <option value="Gamaleya Institute">Gamaleya Institute</option>
+            <option value="Sinopharm">Sinopharm</option>
+            <option value="Oxford">Oxford</option>
+          </select>
+        </td>
+        <td>
+          <input type="text" 
+          style="width: 83px;"
+          class="imput-tabela"
+          name="nezeljene_reakcije"
+          id="nezeljene_reakcije"
+          [(ngModel)]="evidencijaVakcinacija.tabela.doza[0].nezeljene_reakcije" />
+        </td>
+        <td></td>
+      </tr>
+      <!-- ispod tabele -->
+      <tr>
+        <td colspan="8">
+          Привремене контраиндикације <br />
+          (датум утврђивања и дијагноза):
+          <input type="date" 
+          name="privremene_kontraindikacije_datum"
+          id="privremene_kontraindikacije_datum"
+          [(ngModel)]="evidencijaVakcinacija.tabela.privremene_kontraindikacije.datum" />
+          <input type="text" 
+          name="privremene_kontraindikacije_dijagnoza"
+          id="privremene_kontraindikacije_dijagnoza"
+          [(ngModel)]="evidencijaVakcinacija.tabela.privremene_kontraindikacije.dijagnoza" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="8">
+          Одлука комисије за трајне контраиндикације (ако постоји, уписати Да)
+          <input type="text" 
+          name="odluka_komisije"
+          id="odluka_komisije"
+          [(ngModel)]="evidencijaVakcinacija.tabela.odluka_komisije" />
+        </td>
+      </tr>
+    </tbody>
+    
+    
+  </table>
+  <b>Напомена:</b> Образац се чува као део медицинске документације пацијента.
+
+  <div class="form-group">
+    <button class="btn btn-primary btn-block" id="ok" (click)="onPotvrdi()">
+      Потврди
+    </button>
+  </div>

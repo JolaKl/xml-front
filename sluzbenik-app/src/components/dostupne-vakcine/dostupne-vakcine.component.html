@@ -1,0 +1,24 @@
+<h2>Stanje vakcina</h2>
+<table class="table">
+    <tr *ngFor="let v of trenutnoStanje.brojDoza">
+        <td>
+            {{v.tipVakcine}}
+        </td>
+        <td>
+            {{v.value}}
+        </td>
+    </tr>
+</table>
+<h2>Ažuriranje stanja vakcina</h2>
+<div class="form-group row">
+    <label for="tipVakcine" class="form-control-label col-auto">Tip Vakcine:</label>
+    <!-- <input  type="number" class="form-control col"> -->
+    <select [(ngModel)]="vakcina.tipVakcine" name="tipVakcine" id="tipVakcines" class="col">
+        <option *ngFor="let v of vakcine" value="{{v}}">{{v}}</option>
+    </select>
+</div>
+<div class="form-group row">
+    <label for="value" class="form-control-label col-auto">Količina:</label>
+    <input type="number" min="1" [(ngModel)]="vakcina.value" name="value" id="value" class="col">
+</div>
+<button class="btn btn-primary" (click)="dodajDoze()">Dodaj</button>
