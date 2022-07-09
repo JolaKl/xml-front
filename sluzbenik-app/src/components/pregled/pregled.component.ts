@@ -23,6 +23,7 @@ export class PregledComponent implements OnInit {
 
   public razlog: string = '';
   public idK: any;
+  public status: string | undefined | null;
 
   public mozesObraditiZahtev: boolean = false;
 
@@ -39,6 +40,7 @@ export class PregledComponent implements OnInit {
     this.tipDokumenta = this.route.snapshot.paramMap.get('tipDokumenta') + '';
     document.getElementsByTagName('iframe')[0].src = '/prikaz/'+this.tipDokumenta+'/' + this.id;
     this.getReferencirani()
+    
   }
 
   downloadXhtml(): void {
@@ -111,6 +113,13 @@ export class PregledComponent implements OnInit {
   }
 
   prihvati() : void {
+    let iframeWindow = document.getElementsByTagName('iframe')[0].contentWindow;
+    this.status = iframeWindow?.document.getElementById('status')?.textContent;
+    if (this.status?.includes('O')) {
+      alert('Zahtev je vec obradjen!');
+      return;
+    }
+
     this.zahtevService.prihvati(this.id).subscribe({
       next: (response: any) => {
         alert("uspesno prihvacen zahtev");
@@ -125,7 +134,13 @@ export class PregledComponent implements OnInit {
   }
 
   odbij() : void {
-    //.split('<p>')[1].split('</p>')[0]
+    let iframeWindow = document.getElementsByTagName('iframe')[0].contentWindow;
+    this.status = iframeWindow?.document.getElementById('status')?.textContent;
+    if (this.status?.includes('O')) {
+      alert('Zahtev je vec obradjen!');
+      return;
+    }
+
     this.zahtevService.odbij(this.id, this.razlog).subscribe({
       next: (response: any) => {
         alert("uspesno odbijen zahtev");
@@ -140,6 +155,9 @@ export class PregledComponent implements OnInit {
   }
 
   getReferencirani(): void {
+    if (this.tipDokumenta.includes("izvestaj")) {
+      return;
+    }
     this.pretragaService.referenciraniDokumenti(this.tipDokumenta+"/"+this.id).subscribe({
       next: (response: any) => {
         console.log('Uspesno dobijeno:', response);
@@ -148,7 +166,7 @@ export class PregledComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
-        alert('greska');
+        //alert('Nema referenciranih dokumenata');
       },
     });
   }

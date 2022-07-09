@@ -27,6 +27,11 @@
           >Izveštaj</a
         >
       </li>
+      <li class="nav-item" *ngIf="loggedIn">
+        <a class="nav-link"  [routerLink]="['dostupne-vackine']"
+          >Stanje vakcina</a
+        >
+      </li>
       <!-- <li class="nav-item">
         <a class="nav-link" [routerLink]="['moji-dokumenti']"
           >Моји документи</a
@@ -35,7 +40,7 @@
     </ul>
     <form class="form-inline mt-2 mt-md-0">
       <!-- todo: Након пријаве, требало би да нестану регистрација и логин, што се деси само након рифреша -->
-      <a class="nav-link" *ngIf="!loggedIn" [routerLink]="['registracija']">Registracija</a>
+      <!-- <a class="nav-link" *ngIf="!loggedIn" [routerLink]="['registracija']">Registracija</a> -->
       <a class="nav-link" *ngIf="!loggedIn" [routerLink]="['login']">Prijavi se</a>
       <a class="nav-link" *ngIf="loggedIn" [routerLink]="['login']" (click)="logout()">Odjavi se</a>
     </form>

@@ -2,11 +2,15 @@
     <div class="mx-2" id="preuzimanjeDiv">
         <button class="btn btn-secondary" (click)="downloadXhtml()">Preuzmi XHTML</button>
         <button class="btn btn-secondary mx-2" (click)="downloadPdf()">Preuzmi PDF</button>
-        <button class="btn btn-secondary" (click)="downloadMetadataRdf()">Preuzmi Metapodatke RDF</button>
-        <button class="btn btn-secondary" (click)="downloadMetadataJson()">Preuzmi Metapodatke JSON</button>
+        <button *ngIf="!tipDokumenta.includes('izvestaj')" class="btn btn-secondary mr-2" (click)="downloadMetadataRdf()">Preuzmi Metapodatke RDF</button>
+        <button *ngIf="!tipDokumenta.includes('izvestaj')" class="btn btn-secondary mr-2" (click)="downloadMetadataJson()">Preuzmi Metapodatke JSON</button>
     </div>
-    <div class="mt-1 mx-2" *ngIf="tipDokumenta == 'zahtev-za-sertifikat'">
-        <button class="btn btn-primary" (click)="drugiDokumenti()">Ostali dokumenti korisnika</button>
+
+    <div class="mt-1 mx-2 my-2">
+        <button class="btn btn-primary" (click)="drugiDokumenti()">Svi dokumenti korisnika</button>
+    </div>
+    
+    <div class="mt-1 mx-2" *ngIf="tipDokumenta == 'zahtev-za-sertifikat' && !status?.includes('O')">
         <!-- <app-dokumenti-korisnika [idK]="idK"></app-dokumenti-korisnika> -->
         
         <div class="container">
@@ -19,11 +23,12 @@
         </div>
             
     </div>
-    <div class="card" *ngIf="referenciraniDokumenti.listaDokumenata.length > 0">
+    <div class="card mt-1 mx-2" *ngIf="referenciraniDokumenti.listaDokumenata.length > 0">
         <h3>Referencirani dokumenti</h3>
         <div *ngFor="let rd of referenciraniDokumenti.listaDokumenata">
-        <a href="{{rd.documentURI}}">{{rd.tipDokumenta}}</a>
+            <a href="{{rd.documentURI}}">{{rd.tipDokumenta}}</a>
         </div>
     </div>
+    <div class="card mt-1 mb-2 mx-2 bg-light" *ngIf="referenciraniDokumenti.listaDokumenata.length == 0"><span class="my-2 text-center">Nema referenciranih dokumenata</span></div>
     <iframe class="container" style="height: 800px" src="#" frameborder="0"></iframe>
 </div>
