@@ -10,6 +10,7 @@ import {LoginService} from "../service/login.service";
 export class AppComponent implements OnInit {
   title = 'portal-za-imunizaciju-app';
   loggedIn = false
+  uloga: string | null = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedIn = this.loginService.checkLogin()
+    this.uloga = localStorage.getItem('ulogaKorisnika');
   }
 
   onClickUsers() {

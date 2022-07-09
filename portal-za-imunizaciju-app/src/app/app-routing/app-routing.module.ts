@@ -23,6 +23,7 @@ export const routes :Routes = [
   {path: 'potvrda-vakcinacije', component: PotvrdaOVakcinacijiComponent},
   {path: 'registracija', component: RegistracijaComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'prikaz/obrazac-saglasnosti', component: PrikazHtmlComponent},
   {path: 'prikaz/:tipDokumenta/:id', component: PrikazHtmlComponent},
   {path: 'pregled/:tipDokumenta/:id', component: PregledComponent},
   {path: 'moji-dokumenti', component: MojiDokumentiComponent},

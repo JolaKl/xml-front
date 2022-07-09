@@ -19,10 +19,12 @@
   <br />
   <br />
   <br />
-  <form name="obrazac" (ngSubmit)="(f.form.valid)" #f="ngForm">
+  <form name="obrazac" novalidate #f="ngForm"> <!--(ngSubmit)="(f.form.valid)"-->
     <b>Држављанство</b> 1) Република Србија | ЈМБГ
     <input
-      type="text"
+      type="number"
+      min="10000000000000"
+      max="99999999999999"
       name="jmbg"
       id="jmbg"
       class="txt-imput"
@@ -47,9 +49,10 @@
       <div id="block-2">
         <div id="a">
           <input
-            type="text"
+            type="test"
             id="drzavljanstvo"
             class="txt-imput"
+            name="drzavljanstvo"
             style="margin-right: 10px"
             [(ngModel)]="
               obrazacSaglasnosti.evidencija_pacijent.pacijent.drzavljanstvo
@@ -67,8 +70,9 @@
 
         <div id="a">
           <input
-            type="text"
+            type="number"
             id="pasos"
+            name="pasos"
             class="txt-imput"
             maxlength="10"
             [(ngModel)]="
@@ -97,6 +101,7 @@
       <input
         type="text"
         id="prezime"
+        name="prezime"
         class="txt-imput"
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.prezime
@@ -106,6 +111,7 @@
       <input
         type="text"
         id="ime"
+        name="ime"
         class="txt-imput"
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.ime
@@ -114,6 +120,7 @@
       <input
         type="text"
         id="imeRoditelja"
+        name="imeRoditelja"
         class="txt-imput"
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.ime_roditelja
@@ -127,7 +134,7 @@
         type="radio"
         id="m"
         class="radio"
-        name="pol"
+        name="m"
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.pol
         "
@@ -139,6 +146,7 @@
         type="radio"
         id="z"
         class="radio"
+        name="z"
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.pol
         "
@@ -160,6 +168,7 @@
         type="text"
         id="mestoRodjenja"
         class="txt-imput"
+        name="mestoRodjenja"
         [(ngModel)]="
         obrazacSaglasnosti.evidencija_pacijent.pacijent.mesto_rodjenja
         "
@@ -171,6 +180,7 @@
         type="text"
         id="adresa"
         class="txt-imput"
+        name="adresa"
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.adresa
             .Ulica
@@ -180,6 +190,7 @@
         type="text"
         id="adresa"
         class="txt-imput"
+        name="adresa2"
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.adresa
             .Broj
@@ -190,6 +201,7 @@
         type="text"
         id="mesto"
         class="txt-imput"
+        name="mesto"
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.adresa
             .Mesto
@@ -202,6 +214,7 @@
         type="text"
         id="fiksni"
         class="txt-imput"
+        name="fiksni"
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.kontakt.tel_fiksni
         "
@@ -220,6 +233,7 @@
         type="text"
         id="mobilni"
         class="txt-imput"
+        name="mobilni"
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.kontakt.tel_mobilni
         "
@@ -237,6 +251,7 @@
         type="text"
         id="mejl"
         class="txt-imput"
+        name="mejl"
         [(ngModel)]="
           obrazacSaglasnosti.evidencija_pacijent.pacijent.kontakt.email
         "
@@ -403,6 +418,7 @@
       type="text"
       id="prosveta"
       class="radio"
+      name="prosveta"
       [(ngModel)]="
         obrazacSaglasnosti.evidencija_pacijent.pacijent.socijalna_zastita
           .sediste
@@ -414,7 +430,7 @@
     <b><input type="radio" id="nesaglasan" class="radio" name="saglasnost" [(ngModel)]="obrazacSaglasnosti.saglasnost.izjava" value="false"/> HИСАМ САГЛАСАН </b>
     (означити) са спровођењем активне/пасивне<br />
     имунизације (уписати назив имунолошког лека):</fieldset>
-    <input type="text" [(ngModel)]="obrazacSaglasnosti.saglasnost.naziv_leka"/><br /><br />
+    <input type="text" id="lek" name="lek" [(ngModel)]="obrazacSaglasnosti.saglasnost.naziv_leka"/><br /><br />
 
     <b>Лекар ми је објаснио предности и ризике од спровођења активне/пасивне
       имунизације наведеним имунолошким леком.</b>

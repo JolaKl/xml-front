@@ -11,7 +11,7 @@
             </div>
             <div class="e-table">
               <div class="table-responsive table-lg mt-3">
-                <table *ngIf="dokumenti" class="table table-bordered">
+                <table *ngIf="dokumenti.listaDokumenata.length > 0" class="table table-bordered">
                   <thead>
                     <tr>
                       <th class="sortable">Tip Dokumenta</th>
@@ -27,7 +27,7 @@
                     </tr>
                   </tbody>
                 </table>
-                <p *ngElse>Nema dokumenata</p>
+                <p *ngIf="dokumenti.listaDokumenata.length == 0" class="text-secondary text-center">Nema dokumenata</p>
               </div>
             </div>
           </div>

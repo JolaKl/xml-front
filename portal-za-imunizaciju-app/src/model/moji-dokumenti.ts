@@ -3,7 +3,7 @@ export class DokumentiKorisnika {
     idKorisnika: number;
 
     constructor(obj?: any) {
-        this.listaDokumenata = (obj && obj.listaDokumenata) || null;
+        this.listaDokumenata = (obj && obj.listaDokumenata) || [];
         this.idKorisnika = (obj && obj.idKorisnika) || 0;
     }
 }

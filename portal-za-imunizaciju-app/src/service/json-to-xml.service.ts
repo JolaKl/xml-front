@@ -27,7 +27,7 @@ export const interesovanjeToXml = (oi: ObrazacInteresovanja) => {
         <is:lokacija_opstina>${oi.opsti_podaci.lokacija_opstina}</is:lokacija_opstina>
         <is:tip_vakcine>${oi.opsti_podaci.tip_vakcine}</is:tip_vakcine>
         <is:davalac_krvi>${oi.opsti_podaci.davalac_krvi}</is:davalac_krvi>
-        <is:datum_podnosenja>${datum}</is:datum_podnosenja>
+        <is:datum_podnosenja>${oi.opsti_podaci.datum_podnosenja}</is:datum_podnosenja>
         <is:idPodnosioca>${localStorage.getItem('idKorisnika')}</is:idPodnosioca>
     </is:opsti_podaci>
     <is:dokument_id>1</is:dokument_id>
@@ -36,7 +36,9 @@ export const interesovanjeToXml = (oi: ObrazacInteresovanja) => {
 
 export const obrazacSaglasnostiBezEVToXml = (os: ObrazacSaglasnosti, srbin: boolean = true, socijalno: boolean = false) => {
   const today = new Date()
-  const datum = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
+  const datum = today.toISOString().split('T')[0];
+
+  alert("id podnosioca "+localStorage.getItem('idKorisnika'))
 
   let xmlUvod = `<?xml version="1.0" encoding="UTF-8"?>`;
   let svePreDrzavljanstva = `${xmlUvod}
@@ -101,12 +103,12 @@ export const obrazacSaglasnostiBezEVToXml = (os: ObrazacSaglasnosti, srbin: bool
         </os:pacijent>
     </os:evidencija_pacijent>
     <os:dokument_info>
-        <os:dokument_id>${localStorage.getItem('idKorisnika')}</os:dokument_id>
+        <os:dokument_id>1</os:dokument_id>
         <os:saglasnost>
             <os:izjava>${os.saglasnost.izjava}</os:izjava>
             <os:naziv_leka>${os.saglasnost.naziv_leka}</os:naziv_leka>
         </os:saglasnost>
-        <os:idPodnosioca>2</os:idPodnosioca>
+        <os:idPodnosioca>${localStorage.getItem('idKorisnika')}</os:idPodnosioca>
         <os:datum_kreiranja>${datum}</os:datum_kreiranja>
     </os:dokument_info>
 </os:obrazac_saglasnosti>` // todo: izjava ne treba uvek da bude true (linija 84) i idPodnosioca ne treba uvek 2

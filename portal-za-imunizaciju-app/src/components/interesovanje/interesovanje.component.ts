@@ -34,15 +34,18 @@ export class InteresovanjeComponent implements OnInit {
     this.validForm = this.checkForm();
     console.log(this.checkForm());
 
+    this.interesovanje.opsti_podaci.datum_podnosenja = new Date().toISOString().split('T')[0];
+
     const obrazac = interesovanjeToXml(this.interesovanje);
 
     this.interesovanjeService.addObrazac(obrazac).subscribe({
       next: (response: any) => {
         console.log('Uspesno dodato:', response);
+        window.location.href = '/moji-dokumenti'
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
-        alert('greska kod dodavanja');
+        alert('Interesovanje je vec kreirano');
       },
     });
   }

@@ -1,7 +1,7 @@
 <div class="container">
     <label for="inputId">ID Obrasca saglasnosti</label>
-    <input id="inputId" type="number" [(ngModel)]="id" class="form-control" (change)="nadjiSaglasnost()">
-    <iframe class="container" style="height: 800px" src="prikaz/obrazac-saglasnosti/1" frameborder="0"></iframe>
+    <input id="inputId" type="string" [(ngModel)]="id" class="form-control" (change)="nadjiSaglasnost()">
+    <iframe class="container" style="height: 600px" src="prikaz/obrazac-saglasnosti/1" frameborder="0"></iframe>
     <button id="dalje" class="btn btn-primary flex d-block" (click)="drugiDeoFormaOpen()" (disabled)="buttonDisabled">Popuni drugi deo</button>
     <label for="razlog">Razlog</label>
     <input type="text" id="razlog" class="form-control" [(ngModel)]="razlog">

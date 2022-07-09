@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Dokument, DokumentiKorisnika } from 'src/model/moji-dokumenti';
 import { DokumentiKorisnikaService } from 'src/service/dokumenti-korisnika.service';
 import { xml2js } from 'xml-js';
-import { Moment } from 'moment';
 import * as moment from 'moment';
 
 @Component({
@@ -27,7 +26,7 @@ export class MojiDokumentiComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
-        alert('greska kod nalazenja korisnikovih dokumenata');
+        //alert('greska kod nalazenja korisnikovih dokumenata');
       },
     });
   }

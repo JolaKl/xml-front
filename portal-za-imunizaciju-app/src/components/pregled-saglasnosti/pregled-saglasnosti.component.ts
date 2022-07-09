@@ -12,7 +12,7 @@ import { xml2js } from 'xml-js';
   styleUrls: ['./pregled-saglasnosti.component.css']
 })
 export class PregledSaglasnostiComponent implements OnInit {
-  public id: string = '8449810697876898801';
+  public id: string = ' ';
   public buttonDisabled: boolean = true;
   public razlog: string = '';
 

@@ -1,23 +1,23 @@
 <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
-      <li *ngIf="loggedIn" class="nav-item">
-        <a class="nav-link" [routerLink]="['interesovanje']">Интересовање</a>
+      <li *ngIf="loggedIn && uloga === 'gradjanin'" class="nav-item">
+        <a class="nav-link" [routerLink]="['interesovanje']">Interesovanje</a>
       </li>
-      <li *ngIf="loggedIn" class="nav-item">
+      <li *ngIf="loggedIn && uloga === 'gradjanin'" class="nav-item">
         <a class="nav-link" [routerLink]="['obrazac-saglasnosti']"
           >Saglasnost</a
         >
       </li>
-      <li *ngIf="loggedIn" class="nav-item">
+      <li *ngIf="loggedIn && uloga === 'gradjanin'" class="nav-item">
         <a class="nav-link" [routerLink]="['sertifikat-zahtev']">Zahtev za sertifikat</a>
       </li>
-      <li *ngIf="loggedIn" class="nav-item">
-        <a class="nav-link" [routerLink]="['potvrda-vakcinacije']"
-          >Potvrda o vakcinaciji</a
+      <li *ngIf="loggedIn && uloga === 'zdravstveni_radnik'" class="nav-item">
+        <a class="nav-link" [routerLink]="['pregled-saglasnosti']"
+          >Pregled saglasnosti</a
         >
       </li>
-      <li *ngIf="loggedIn" class="nav-item">
+      <li *ngIf="loggedIn && uloga === 'gradjanin'" class="nav-item">
         <a class="nav-link" [routerLink]="['moji-dokumenti']"
           >Moji dokumenti</a
         >

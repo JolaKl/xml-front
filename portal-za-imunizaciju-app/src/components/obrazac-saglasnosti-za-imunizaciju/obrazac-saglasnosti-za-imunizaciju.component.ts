@@ -41,10 +41,14 @@ export class ObrazacSaglasnostiZaImunizacijuComponent implements OnInit {
   }
 
   onPotvrdi(){
+    alert("alou");
     const obrazac = obrazacSaglasnostiBezEVToXml(this.obrazacSaglasnosti, this.srbin)
+    alert(obrazac);
+    alert(this.obrazacSaglasnosti.saglasnost.naziv_leka);
     this.obrazacSaglasnostiService.addObrazacSaglasnosti(obrazac).subscribe({
       next: (response: any) => {
         console.log('Uspesno dodato:', response)
+        window.location.href = "/moji-dokumenti";
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message)
@@ -64,8 +68,10 @@ export class ObrazacSaglasnostiZaImunizacijuComponent implements OnInit {
   }
 
   checkJMBG(): Boolean{
-    const mobilniPattern = new RegExp("[0-9]{13}");
-    return !mobilniPattern.test(this.obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.jmbg);
+    if (this.obrazacSaglasnosti.evidencija_pacijent.pacijent.drzavljanstvo.strano.broj_pasosa) return false;
+    // const mobilniPattern = new RegExp("[0-9]{13}");
+    // return !mobilniPattern.test(this.obrazacSaglasnosti.evidencija_pacijent.pacijent.pacijent_info.jmbg);
+    return false;
   }
 
   checkEmail(): Boolean{
@@ -74,8 +80,8 @@ export class ObrazacSaglasnostiZaImunizacijuComponent implements OnInit {
   }
 
   checkBrojPasosa(): Boolean{
-
-    const mobilniPattern = new RegExp("[0-9]{9,10}");
+    //if (this.obrazacSaglasnosti.evidencija_pacijent.pacijent.drzavljanstvo.srpsko.JMBG.length == 13) return false;
+    const mobilniPattern = new RegExp("[0-9]{9,10}|[0-9]{0}");
     return !mobilniPattern.test(this.obrazacSaglasnosti.evidencija_pacijent.pacijent.drzavljanstvo.strano.broj_pasosa);
   }
 }

@@ -37,7 +37,10 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('korisnickoIme', korisnikJS.elements[0].attributes.korisnickoIme)
         localStorage.setItem('idKorisnika', korisnikJS.elements[0].attributes.id)
         localStorage.setItem('ulogaKorisnika', korisnikJS.elements[0].elements[1].elements[0].elements[0].text)
-        window.location.href = '/moji-dokumenti';
+        if (localStorage.getItem('ulogaKorisnika') === 'gradjanin')
+          window.location.href = '/moji-dokumenti';
+        else
+        window.location.href = '/pregled-saglasnosti';
       },
       error: (error: HttpErrorResponse) => {
         this.isLoginFailed = true;
