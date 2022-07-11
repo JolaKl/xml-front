@@ -13,7 +13,7 @@ export class ObrazacSaglasnostiService {
   }
 
   public addObrazacSaglasnosti(obrazac: any): Observable<string> {
-    alert('saljem obrazac na server ' + this.apiServerUrl);
+    //alert('saljem obrazac na server ' + this.apiServerUrl);
     return this.http.post(
       this.apiServerUrl,
       obrazac,

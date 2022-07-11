@@ -41,9 +41,9 @@ export class ObrazacSaglasnostiZaImunizacijuComponent implements OnInit {
   }
 
   onPotvrdi(){
-    alert("alou");
+    //alert("alou");
     const obrazac = obrazacSaglasnostiBezEVToXml(this.obrazacSaglasnosti, this.srbin)
-    alert(obrazac);
+    //alert(obrazac);
     alert(this.obrazacSaglasnosti.saglasnost.naziv_leka);
     this.obrazacSaglasnostiService.addObrazacSaglasnosti(obrazac).subscribe({
       next: (response: any) => {

@@ -38,7 +38,7 @@ export const obrazacSaglasnostiBezEVToXml = (os: ObrazacSaglasnosti, srbin: bool
   const today = new Date()
   const datum = today.toISOString().split('T')[0];
 
-  alert("id podnosioca "+localStorage.getItem('idKorisnika'))
+  //alert("id podnosioca "+localStorage.getItem('idKorisnika'))
 
   let xmlUvod = `<?xml version="1.0" encoding="UTF-8"?>`;
   let svePreDrzavljanstva = `${xmlUvod}
