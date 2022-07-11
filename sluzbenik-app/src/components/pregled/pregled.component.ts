@@ -161,12 +161,12 @@ export class PregledComponent implements OnInit {
     this.pretragaService.referenciraniDokumenti(this.tipDokumenta+"/"+this.id).subscribe({
       next: (response: any) => {
         console.log('Uspesno dobijeno:', response);
-        //this.referenciraniDokumenti = response;
+        if (response == "")
+          return;
         this.transformToJSON(response);
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
-        //alert('Nema referenciranih dokumenata');
       },
     });
   }
